@@ -50,7 +50,7 @@ if (!isset($_SESSION['student'])) {
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="https://i.postimg.cc/tJ6d4mf3/logo.png" alt="College Logo" height="40">
+      <img src="logo.jpg" alt="College Logo" height="40">
       &nbsp; Student Portal
     </a>
   </div>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['student'])) {
     <div id="student" class="tab-pane fade show active">
       <div class="text-center mb-3">
         <div class="profile-pic mb-2">
-          <img src="https://i.postimg.cc/QNKJmHtF/profile.jpg" alt="Student Photo">
+          <img src="profile.jpg" alt="Student Photo">
         </div>
         <h5 class="fw-bold">VALLURI SRI KRISHNA VARDAN</h5>
         <p class="text-muted">Roll No: 2403031260215 | Branch: CSE (3CYBER3)</p>
