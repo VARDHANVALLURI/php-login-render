@@ -1,16 +1,22 @@
 <?php
-// Save login session for 60 days (2 months)
+// Ensure no previous session or output
+if (session_status() === PHP_SESSION_ACTIVE) {
+    session_write_close(); // Close current session if already started
+}
+
+// Set cookie params BEFORE session_start
 session_set_cookie_params([
-  'lifetime' => 5184000, // 60 days in seconds
-  'path' => '/',
-  'secure' => true,
-  'httponly' => true,
-  'samesite' => 'Lax'
+    'lifetime' => 60 * 60 * 24 * 60, // 60 days
+    'path' => '/',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Lax'
 ]);
+
 session_start();
 
 $students = [
-  "9951996671" => "vardhan123@"
+    "9951996671" => "vardhan123@"
 ];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -25,5 +31,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Invalid credentials";
     }
 }
-
-
+?>
