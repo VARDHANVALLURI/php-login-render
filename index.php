@@ -1,7 +1,22 @@
 <?php
-// Do NOT start session here — xauth.php will handle it
+session_start();
+
+// ✅ Auto-login using cookie
+if (!isset($_SESSION["student"]) && isset($_COOKIE["student_login"])) {
+  $_SESSION["student"] = $_COOKIE["student_login"];
+  header("Location: dashboard.php");
+  exit;
+}
+
+// ✅ If already logged in via session, go to dashboard
+if (isset($_SESSION["student"])) {
+  header("Location: dashboard.php");
+  exit;
+}
+
+// ✅ If form is submitted, handle login via xauth.php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  require_once __DIR__ . "/private/xauth.php"; // Handles login + session
+  require_once __DIR__ . "/private/xauth.php"; // Handles login + session + cookie
 }
 ?>
 
