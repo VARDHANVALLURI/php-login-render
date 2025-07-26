@@ -1,8 +1,7 @@
 <?php
-session_start();
-
+// Do NOT start session here — xauth.php will handle it
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  require_once __DIR__ . "/private/xauth.php"; // Now using xauth.php
+  require_once __DIR__ . "/private/xauth.php"; // Handles login + session
 }
 ?>
 
