@@ -203,7 +203,7 @@ if (!isset($_SESSION['student'])) {
     <div id="results" class="tab-pane fade">
       <h5 class="mb-3"> Sem 2 Result Update</h5>
       <div class="alert alert-info text-center fs-5">
-        Dear Students Sem 2 Results will be declared on july 28. Please check back later.
+        Dear Students Sem 2 Results will be declared soon. Please check back later.
       </div>
     </div>
 
