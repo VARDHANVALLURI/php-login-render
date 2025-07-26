@@ -2,19 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
-
-  // Reading from students.txt instead of .json (to avoid InfinityFree block)
-  $data = json_decode(file_get_contents(__DIR__ . "/private/students.txt"), true);
-
-  if (isset($data[$username]) && $data[$username] === $password) {
-    $_SESSION["student"] = $username;
-    header("Location: dashboard.php");
-    exit;
-  } else {
-    $error = "Invalid credentials";
-  }
+  require_once __DIR__ . "/private/xauth.php"; // Now using xauth.php
 }
 ?>
 
