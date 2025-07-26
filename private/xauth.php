@@ -1,35 +1,29 @@
 <?php
-// Set cookie parameters to keep login session for 7 days
+// Save login session for 60 days (2 months)
 session_set_cookie_params([
-  'lifetime' => 604800, // 7 days
+  'lifetime' => 5184000, // 60 days in seconds
   'path' => '/',
-  'secure' => true,      // use https
+  'secure' => true,
   'httponly' => true,
   'samesite' => 'Lax'
 ]);
-
 session_start();
 
-// Dummy login data
-$users = [
+$students = [
   "9951996671" => "vardhan123@"
 ];
 
-// Check if login form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"] ?? "";
     $password = $_POST["password"] ?? "";
 
-    // Validate credentials
-    if (isset($users[$username]) && $users[$username] === $password) {
+    if (isset($students[$username]) && $students[$username] === $password) {
         $_SESSION["student"] = $username;
         header("Location: ../dashboard.php");
         exit;
     } else {
-        echo "Invalid credentials. <a href='../index.php'>Try again</a>";
+        $error = "Invalid credentials";
     }
-} else {
-    echo "Access denied.";
 }
-?>
+
 
