@@ -225,31 +225,28 @@ if (!isset($_SESSION['student'])) {
 <!-- PDF Export Script -->
 <script>
   function downloadPDF() {
-    const resultDiv = document.getElementById("resultImageDiv");
-    const button = resultDiv.querySelector("button");
+    const button = document.getElementById("pdfBtn");
+    const target = document.getElementById("resultImageDiv");
 
-    // Hide button before capture
-    button.classList.add("hide-in-pdf");
+    // Hide button temporarily
+    button.style.display = 'none';
 
-    html2canvas(resultDiv, { scale: 2 }).then(canvas => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-
+    html2canvas(target, { scale: 2 }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
       const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-
       const imgProps = pdf.getImageProperties(imgData);
       const imgWidth = pageWidth - 20;
       const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
 
-      pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
-      pdf.save("result.pdf");
+      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+      pdf.save('result.pdf');
 
-      // Restore button after capture
-      button.classList.remove("hide-in-pdf");
+      // Show button again
+      button.style.display = 'inline-block';
     });
   }
 </script>
 
 </body>
-</html>
+</html>  
