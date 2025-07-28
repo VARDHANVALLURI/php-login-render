@@ -219,34 +219,25 @@ if (!isset($_SESSION['student'])) {
   </div>
 </div>
 
-<!-- Bootstrap JS -->
+  <!-- Bootstrap Bundle (JS) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- PDF Export Script -->
+<!-- PDF Download Script -->
 <script>
-  function downloadPDF() {
-    const button = document.getElementById("pdfBtn");
-    const target = document.getElementById("resultImageDiv");
-
-    // Hide button temporarily
-    button.style.display = 'none';
-
-    html2canvas(target, { scale: 2 }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const imgProps = pdf.getImageProperties(imgData);
-      const imgWidth = pageWidth - 20;
-      const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
-
-      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
-      pdf.save('result.pdf');
-
-      // Show button again
-      button.style.display = 'inline-block';
-    });
+  async function downloadPDF() {
+    const element = document.getElementById("resultImageDiv");
+    const canvas = await html2canvas(element, { scale: 2 });
+    const imgData = canvas.toDataURL("image/jpeg", 1.0);
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+    const width = pdf.internal.pageSize.getWidth() - 20;
+    const height = canvas.height * width / canvas.width;
+    pdf.addImage(imgData, 'JPEG', 10, 10, width, height);
+    pdf.save("student-result-photo.pdf");
   }
 </script>
 
 </body>
-</html>  
+</html>
+
+
