@@ -200,17 +200,14 @@ if (!isset($_SESSION['student'])) {
     </div>
 
     <!-- Results Tab -->
-
-<div id="results" class="tab-content">
-  <h3>Results</h3>
-  <div class="text-center" id="resultImageDiv">
-    <img src="https://paruluniversitygnums-ac-in.onrender.com/resultphoto.png" id="result-img" class="img-fluid mb-3" alt="Result Image" crossorigin="anonymous" style="max-width:100%; height:auto;">
-    <br>
-    <a id="downloadBtn" href="#" class="btn btn-success" onclick="downloadPDF()">⬇️ Download PDF</a>
-  </div>
-</div>
-
-
+     <div id="results" class="tab-pane fade">
+      <h5 class="mb-3">Result Image</h5>
+      <div class="text-center" id="resultImageDiv">
+        <img src="resultphoto.png" class="result-img mb-3" alt="Result Photo">
+        <br>
+        <button class="btn btn-primary" onclick="downloadPDF()">⬇️ Download as PDF</button>
+      </div>
+    </div>
 
   <!-- Fees Tab -->
     <div id="fees" class="tab-pane fade">
@@ -222,66 +219,7 @@ if (!isset($_SESSION['student'])) {
   </div>
 </div>
 
-<!-- PDF Dependencies -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<script>
-  async function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const imageElement = document.getElementById("result-img");
-
-    // Ensure image is fully loaded
-    if (!imageElement.complete) {
-      alert("Image is still loading. Please wait...");
-      return;
-    }
-
-    document.getElementById("downloadBtn").innerText = "Generating...";
-
-    html2canvas(imageElement, {
-      scale: 2,
-      useCORS: true
-    }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = 190;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
-      pdf.save('result.pdf');
-      document.getElementById("downloadBtn").innerText = "⬇️ Download PDF";
-    }).catch(error => {
-      alert("❌ PDF generation failed: " + error);
-      document.getElementById("downloadBtn").innerText = "⬇️ Download PDF";
-    });
-  }
-</script>
-
-  <script>
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = this.getAttribute('data-tab');
-
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = 'none';
-      });
-
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      document.getElementById(target).style.display = 'block';
-    });
-  });
-
-  // Optional: Show first tab by default
-  window.onload = () => {
-    document.querySelector('.nav-link.active')?.click();
-  };
-</script>
-
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-  
