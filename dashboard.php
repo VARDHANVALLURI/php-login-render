@@ -173,9 +173,9 @@ if (!isset($_SESSION['student'])) {
     </thead>
     <tbody>
       <tr><td>25-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>library</td><td>P</td></tr>
-      <tr><td>24-Jul-25</td><td>thurs</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>23-Jul-25</td><td>wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>22-Jul-25</td><td>tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
+      <tr><td>24-Jul-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
+      <tr><td>23-Jul-25</td><td>Wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
+      <tr><td>22-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
       <tr><td>21-Jul-25</td><td>Mon</td><td>P</td><td>A</td><td>A</td><td>A</td></tr>
       <tr><td>18-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
       <tr><td>17-Jul-25</td><td>Thu</td><td>P</td><td>A</td><td>P</td><td>P</td></tr>
@@ -200,12 +200,17 @@ if (!isset($_SESSION['student'])) {
     </div>
 
     <!-- Results Tab -->
-    <div id="results" class="tab-pane fade">
-      <h5 class="mb-3"> Sem 2 Result Update</h5>
-      <div class="alert alert-info text-center fs-5">
-        Dear Students Sem 2 Results will be declared soon. Please check back later.
+     <div id="results" class="tab-pane fade">
+      <h5 class="mb-3">Result Image</h5>
+      <div class="text-center" id="resultImageDiv">
+        <img src="resultphoto.png" class="result-img mb-3" alt="Result Photo">
+        <br>
+        <button class="btn btn-primary" onclick="downloadPDF()">⬇️ Download as PDF</button>
       </div>
     </div>
+
+
+    
 
     <!-- Fees Tab -->
     <div id="fees" class="tab-pane fade">
