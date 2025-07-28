@@ -204,11 +204,12 @@ if (!isset($_SESSION['student'])) {
 <div id="results" class="tab-content">
   <h3>Results</h3>
   <div class="text-center" id="resultImageDiv">
-    <img src="https://paruluniversitygnums-ac-in.onrender.com/resultphoto.png" id="result-img" class="result-img mb-3 img-fluid" alt="Result Image" style="max-width: 100%; height: auto;">
+    <img src="https://paruluniversitygnums-ac-in.onrender.com/resultphoto.png" id="result-img" class="img-fluid mb-3" alt="Result Image" crossorigin="anonymous" style="max-width:100%; height:auto;">
     <br>
-    <button id="pdfBtn" class="btn btn-success mt-2" onclick="downloadPDF()">⬇️ Download as PDF</button>
+    <a id="downloadBtn" href="#" class="btn btn-success" onclick="downloadPDF()">⬇️ Download PDF</a>
   </div>
 </div>
+
 
 
   <!-- Fees Tab -->
@@ -228,12 +229,17 @@ if (!isset($_SESSION['student'])) {
 <script>
   async function downloadPDF() {
     const { jsPDF } = window.jspdf;
-    const button = document.getElementById("pdfBtn");
-    const target = document.getElementById("resultImageDiv");
+    const imageElement = document.getElementById("result-img");
 
-    button.style.display = 'none';
+    // Ensure image is fully loaded
+    if (!imageElement.complete) {
+      alert("Image is still loading. Please wait...");
+      return;
+    }
 
-    html2canvas(target, {
+    document.getElementById("downloadBtn").innerText = "Generating...";
+
+    html2canvas(imageElement, {
       scale: 2,
       useCORS: true
     }).then(canvas => {
@@ -241,15 +247,15 @@ if (!isset($_SESSION['student'])) {
       const pdf = new jsPDF('p', 'mm', 'a4');
       const imgWidth = 190;
       const imgHeight = canvas.height * imgWidth / canvas.width;
-
       pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
       pdf.save('result.pdf');
-      button.style.display = 'inline-block';
+      document.getElementById("downloadBtn").innerText = "⬇️ Download PDF";
     }).catch(error => {
-      alert("PDF failed: " + error);
-      button.style.display = 'inline-block';
+      alert("❌ PDF generation failed: " + error);
+      document.getElementById("downloadBtn").innerText = "⬇️ Download PDF";
     });
   }
 </script>
+
 
   
