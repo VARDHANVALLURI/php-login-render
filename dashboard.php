@@ -200,14 +200,16 @@ if (!isset($_SESSION['student'])) {
     </div>
 
     <!-- Results Tab -->
-     <div id="results" class="tab-pane fade">
-      <h5 class="mb-3">Result Image</h5>
-      <div class="text-center" id="resultImageDiv">
-        <img src="resultphoto.png" class="result-img mb-3" alt="Result Photo">
-        <br>
-        <button class="btn btn-primary" onclick="downloadPDF()">⬇️ Download as PDF</button>
-      </div>
-    </div>
+
+<div id="results" class="tab-content">
+  <h3>Results</h3>
+  <div class="text-center" id="resultImageDiv">
+    <img src="https://paruluniversitygnums-ac-in.onrender.com/resultphoto.png" id="result-img" class="result-img mb-3 img-fluid" alt="Result Image" style="max-width: 100%; height: auto;">
+    <br>
+    <button id="pdfBtn" class="btn btn-success mt-2" onclick="downloadPDF()">⬇️ Download as PDF</button>
+  </div>
+</div>
+
 
   <!-- Fees Tab -->
     <div id="fees" class="tab-pane fade">
@@ -219,25 +221,35 @@ if (!isset($_SESSION['student'])) {
   </div>
 </div>
 
-  <!-- Bootstrap Bundle (JS) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- PDF Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<!-- PDF Download Script -->
 <script>
   async function downloadPDF() {
-    const element = document.getElementById("resultImageDiv");
-    const canvas = await html2canvas(element, { scale: 2 });
-    const imgData = canvas.toDataURL("image/jpeg", 1.0);
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF();
-    const width = pdf.internal.pageSize.getWidth() - 20;
-    const height = canvas.height * width / canvas.width;
-    pdf.addImage(imgData, 'JPEG', 10, 10, width, height);
-    pdf.save("student-result-photo.pdf");
+    const button = document.getElementById("pdfBtn");
+    const target = document.getElementById("resultImageDiv");
+
+    button.style.display = 'none';
+
+    html2canvas(target, {
+      scale: 2,
+      useCORS: true
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgWidth = 190;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+      pdf.save('result.pdf');
+      button.style.display = 'inline-block';
+    }).catch(error => {
+      alert("PDF failed: " + error);
+      button.style.display = 'inline-block';
+    });
   }
 </script>
 
-</body>
-</html>
-
-
+  
