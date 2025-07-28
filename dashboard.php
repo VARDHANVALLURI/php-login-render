@@ -257,5 +257,31 @@ if (!isset($_SESSION['student'])) {
   }
 </script>
 
+  <script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = this.getAttribute('data-tab');
+
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+      });
+
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+
+      document.getElementById(target).style.display = 'block';
+    });
+  });
+
+  // Optional: Show first tab by default
+  window.onload = () => {
+    document.querySelector('.nav-link.active')?.click();
+  };
+</script>
+
+</body>
+</html>
+
 
   
