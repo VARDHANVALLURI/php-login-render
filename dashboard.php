@@ -221,5 +221,35 @@ if (!isset($_SESSION['student'])) {
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- PDF Export Script -->
+<script>
+  function downloadPDF() {
+    const resultDiv = document.getElementById("resultImageDiv");
+    const button = resultDiv.querySelector("button");
+
+    // Hide button before capture
+    button.classList.add("hide-in-pdf");
+
+    html2canvas(resultDiv, { scale: 2 }).then(canvas => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      const imgProps = pdf.getImageProperties(imgData);
+      const imgWidth = pageWidth - 20;
+      const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
+
+      pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
+      pdf.save("result.pdf");
+
+      // Restore button after capture
+      button.classList.remove("hide-in-pdf");
+    });
+  }
+</script>
+
 </body>
 </html>
