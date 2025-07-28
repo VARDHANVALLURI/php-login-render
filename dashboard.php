@@ -209,10 +209,7 @@ if (!isset($_SESSION['student'])) {
       </div>
     </div>
 
-
-    
-
-    <!-- Fees Tab -->
+  <!-- Fees Tab -->
     <div id="fees" class="tab-pane fade">
       <h5 class="mb-3">Fee Status</h5>
       <div class="alert alert-success text-center">
