@@ -203,7 +203,7 @@ if (!isset($_SESSION['student'])) {
      <div id="results" class="tab-pane fade">
       <h5 class="mb-3">Result Image</h5>
       <div class="text-center" id="resultImageDiv">
-        <img src="resultphoto.png" class="result-img mb-3" alt="Result Photo">
+        <img src="SEMRESULTSPHOTO.jpg" class="result-img mb-3" alt="Result Photo">
         <br>
         <button class="btn btn-primary" onclick="downloadPDF()">⬇️ Download as PDF</button>
       </div>
