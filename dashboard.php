@@ -132,7 +132,7 @@ if (!isset($_SESSION['student'])) {
 
     <!-- Attendance Tab -->
     <div id="attendance" class="tab-pane fade">
-      <h5 class="mb-3">Attendance Overview (Total: 70%)</h5>
+      <h5 class="mb-3">Attendance Overview (Total: 73%)</h5>
 
       <!-- Structured Table -->
       <div class="table-responsive mb-4">
