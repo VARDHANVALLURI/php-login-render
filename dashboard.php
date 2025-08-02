@@ -172,8 +172,11 @@ if (!isset($_SESSION['student'])) {
       </tr>
     </thead>
     <tbody>
-      <tr><td>29-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>PN</td><td>PN</td></tr
-      <tr><td>28-Jul-25</td><td>Mon</td><td>A</td><td>PN</td><td>PN</td><td>PN</td></tr
+      <tr><td>01-Aug-25</td><td>Fri</td><td>P</td><td>P</td><td>PN</td><td>P</td></tr
+      <tr><td>31-Jul-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
+      <tr><td>30-Jul-25</td><td>wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
+      <tr><td>29-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
+      <tr><td>28-Jul-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
       <tr><td>25-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr>
       <tr><td>24-Jul-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
       <tr><td>23-Jul-25</td><td>Wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
