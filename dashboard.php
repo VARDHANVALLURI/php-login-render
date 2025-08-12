@@ -172,6 +172,8 @@ if (!isset($_SESSION['student'])) {
       </tr>
     </thead>
     <tbody>
+      <tr><td>12-Aug-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
+      <tr><td>11-Aug-25</td><td>Mon</td><td>P</td><td>P</td><td>PN</td><td>P</td></tr
       <tr><td>01-Aug-25</td><td>Fri</td><td>P</td><td>P</td><td>PN</td><td>P</td></tr
       <tr><td>31-Jul-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
       <tr><td>30-Jul-25</td><td>wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
@@ -218,7 +220,7 @@ if (!isset($_SESSION['student'])) {
     <div id="fees" class="tab-pane fade">
       <h5 class="mb-3">Fee Status</h5>
       <div class="alert alert-success text-center">
-         All tuition, hostel, and miscellaneous fees have been cleared for the academic year <strong>2025–2026</strong>.
+         All tuition, hostel, and miscellaneous fees have been cleared for the academic year.To Download Fee receipt login to GNUMS Web Portal <strong>2025–2026</strong>.
       </div>
     </div>
   </div>
