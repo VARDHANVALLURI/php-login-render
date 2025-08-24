@@ -132,7 +132,7 @@ if (!isset($_SESSION['student'])) {
 
     <!-- Attendance Tab -->
     <div id="attendance" class="tab-pane fade">
-      <h5 class="mb-3">Attendance Overview (Total: 73%)</h5>
+      <h5 class="mb-3">Attendance Overview </h5>
 
       <!-- Structured Table -->
       <div class="table-responsive mb-4">
@@ -143,12 +143,12 @@ if (!isset($_SESSION['student'])) {
             </tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Design of Data Structures</td><td>Theory</td><td>15</td><td>15</td><td>0</td><td>100%</td></tr>
-            <tr><td>2</td><td>DDS Lab</td><td>Practical</td><td>11</td><td>11</td><td>0</td><td>100%</td></tr>
-            <tr><td>3</td><td>DBMS</td><td>Theory</td><td>15</td><td>15</td><td>0</td><td>100%</td></tr>
-            <tr><td>4</td><td>DBMS Lab</td><td>Practical</td><td>6</td><td>6</td><td>0</td><td>100%</td></tr>
+            <tr><td>1</td><td>Design of Data Structures</td><td>Theory</td><td>28</td><td>26</td><td>2</td></td><td>98%</td></tr>
+            <tr><td>2</td><td>DDS Lab</td><td>Practical</td><td>20</td><td>19</td><td>0</td><td>99%</td></tr>
+            <tr><td>3</td><td>DBMS</td><td>Theory</td><td>28</td><td>28</td><td>0</td><td>100%</td></tr>
+            <tr><td>4</td><td>DBMS Lab</td><td>Practical</td><td>10</td><td>9</td><td>0</td><td>100%</td></tr>
             <tr><td>5</td><td>OOP with JAVA</td><td>Theory</td><td>10</td><td>10</td><td>0</td><td>100%</td></tr>
-            <tr><td>6</td><td>JAVA Lab</td><td>Practical</td><td>5</td><td>5</td><td>0</td><td>100%</td></tr>
+            <tr><td>6</td><td>JAVA Lab</td><td>Practical</td><td>8</td><td>7</td><td>1</td><td>99%</td></tr>
             <tr><td>7</td><td>Kali Linux</td><td>Theory</td><td>15</td><td>10</td><td>5</td><td>66.7%</td></tr>
             <tr><td>8</td><td>Kali Lab</td><td>Practical</td><td>4</td><td>2</td><td>2</td><td>50%</td></tr>
             <tr><td>9</td><td>Discrete Math</td><td>Theory</td><td>19</td><td>10</td><td>9</td><td>52.6%</td></tr>
@@ -172,6 +172,8 @@ if (!isset($_SESSION['student'])) {
       </tr>
     </thead>
     <tbody>
+      <tr><td>22-Aug-25</td><td>Fri</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
+      <tr><td>21-Aug-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
       <tr><td>20-Aug-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr
       <tr><td>19-Aug-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
       <tr><td>18-Aug-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
