@@ -172,6 +172,8 @@ if (!isset($_SESSION['student'])) {
       </tr>
     </thead>
     <tbody>
+      <tr><td>30-sep-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>AB</td></tr
+      <tr><td>29-Sep-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
       <tr><td>25-sep-25</td><td>Thu</td><td>AB</td><td>P</td><td>P</td><td>AB</td></tr
       <tr><td>24-sep-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr
       <tr><td>23-sep-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
