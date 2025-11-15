@@ -95,7 +95,7 @@ if (!isset($_SESSION['student'])) {
       <p><span class="info-label">Duration:</span> 01-07-2025 to 30-06-2026</p>
       <p><span class="info-label">City:</span> EAST GODAVARI</p>
       <p><span class="info-label">Address:</span> HOUSE NO-1-18 MAIN ROAD, NELAPARTHIPADU, DRAKSHARAMAM, RAMCHANDRAPURAM, DR B R AMBEDKAR, NEAR PANCHAYAT</p>
-      <p><span class="info-label">Guardian Phone:</span> 6301244329</p>
+      <p><span class="info-label">Guardian Phone:</span> 6301244329, 9951996671</p>
       
       <h5 class="mt-4 mb-3">Recent Gate Passes</h5>
       <div class="table-responsive">
@@ -106,6 +106,7 @@ if (!isset($_SESSION['student'])) {
             </tr>
           </thead>
           <tbody>
+            <tr><td>1</td><td>Holiday</td><td>HOME</td><td>17-10-2025 05:00 PM</td><td>02-11-2025 06:00 PM</td><td><span class="badge bg-success">Approved</span></td></tr>
             <tr><td>1</td><td>Personal Reason</td><td>PAVGADH</td><td>19-07-2025 05:00 AM</td><td>19-07-2025 06:00 PM</td><td><span class="badge bg-success">Approved</span></td></tr>
             <tr><td>2</td><td>Personal Reason</td><td>VADODARA</td><td>05-07-2025 10:00 AM</td><td>05-07-2025 07:30 PM</td><td><span class="badge bg-success">Approved</span></td></tr>
             <tr><td>3</td><td>Holiday</td><td>HOME</td><td>25-05-2025 10:00 AM</td><td>30-06-2025 12:00 PM</td><td><span class="badge bg-success">Approved</span></td></tr>
@@ -195,44 +196,6 @@ if (!isset($_SESSION['student'])) {
       <tr><td>03-sep-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr
       <tr><td>02-sep-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
       <tr><td>01-Sep-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>29-Aug-25</td><td>Fri</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr
-      <tr><td>28-Aug-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>26-Aug-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>25-Aug-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>22-Aug-25</td><td>Fri</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>21-Aug-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>20-Aug-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr
-      <tr><td>19-Aug-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>18-Aug-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>14-Aug-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>13-Aug-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr
-      <tr><td>12-Aug-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>11-Aug-25</td><td>Mon</td><td>P</td><td>P</td><td>PN</td><td>P</td></tr
-      <tr><td>01-Aug-25</td><td>Fri</td><td>P</td><td>P</td><td>PN</td><td>P</td></tr
-      <tr><td>31-Jul-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>30-Jul-25</td><td>wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>29-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>28-Jul-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr
-      <tr><td>25-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr>
-      <tr><td>24-Jul-25</td><td>Thu</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>23-Jul-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr>
-      <tr><td>22-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>21-Jul-25</td><td>Mon</td><td>P</td><td>A</td><td>A</td><td>A</td></tr>
-      <tr><td>18-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr>
-      <tr><td>17-Jul-25</td><td>Thu</td><td>P</td><td>A</td><td>P</td><td>P</td></tr>
-      <tr><td>16-Jul-25</td><td>Wed</td><td>P</td><td>P</td><td>LIB</td><td>P</td></tr>
-      <tr><td>15-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>14-Jul-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>11-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>10-Jul-25</td><td>Thu</td><td>PN</td><td>A</td><td>A</td><td>A</td></tr>
-      <tr><td>09-Jul-25</td><td>Wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>08-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>07-Jul-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>04-Jul-25</td><td>Fri</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>03-Jul-25</td><td>Thu</td><td>P</td><td>A</td><td>P</td><td>P</td></tr>
-      <tr><td>02-Jul-25</td><td>Wed</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>01-Jul-25</td><td>Tue</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
-      <tr><td>30-Jun-25</td><td>Mon</td><td>P</td><td>P</td><td>P</td><td>P</td></tr>
     </tbody>
   </table>
 </div>
@@ -242,7 +205,7 @@ if (!isset($_SESSION['student'])) {
 
     <!-- Results Tab -->
      <div id="results" class="tab-pane fade">
-      <h5 class="mb-3">Result Image</h5>
+      <h5 class="mb-3">2nd SEM Result Image</h5>
       <div class="text-center" id="resultImageDiv">
         <img src="SEMRESULTSPHOTO.jpg" class="result-img mb-3" alt="Result Photo">
         <br>
