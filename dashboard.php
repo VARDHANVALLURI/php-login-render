@@ -66,7 +66,7 @@ body {
 
 <body>
 
-<div class="header">STUDENT PORTAL</div>
+<div class="header">GNUMS</div>
 
 <!-- ================= HOME PAGE ================ -->
 <section id="home" class="page" style="display:block;">
