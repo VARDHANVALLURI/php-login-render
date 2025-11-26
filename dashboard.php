@@ -66,7 +66,7 @@ body {
 
 <body>
 
-<div class="header">GNUMS</div>
+<div class="header"> </div>
 
 <!-- ================= HOME PAGE ================ -->
 <section id="home" class="page" style="display:block;">
@@ -75,7 +75,7 @@ body {
     <img src="your_profile_small.jpg" alt="Profile">
     <h3>VALLURI SRI KRISHNA VARDAN</h3>
     <p>Roll No: 2403031260215|48</p>
-    <p>CSE(4CYBER2)BATCH 2</p>
+    <p>CSE(4CYBER3)BATCH 2</p>
   </div>
 
   <div class="grid-menu">
