@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: php-login-render
-    env: docker
-    plan: free
-    region: oregon
-    branch: main
-    dockerContext: .
-    dockerfilePath: Dockerfile
