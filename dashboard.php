@@ -493,7 +493,7 @@ $subjects = [
   </div>
 
   <div class="alert-fail">
-    ❗ You are failed in 0 subjects(...PROMOTED TO 3rd SEMESTER...)
+    ❗ PROMOTED TO 3rd SEM (...0 BACKLOGS...)
   </div>
 
   <div class="info-box">
