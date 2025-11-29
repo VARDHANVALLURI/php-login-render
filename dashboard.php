@@ -105,6 +105,7 @@ body {
 // You can add/remove dates and slots anytime.
 
 $attendance = [
+    "2025-11-28" => ["P", "P", "P", "A", "-"],     // 4 slots day
     "2025-11-27" => ["P", "P", "P", "P", "P"],     // 5 slots day
     "2025-11-25" => ["P", "P", "P", "P", "P"],     // 5 slots day
     "2025-11-24" => ["P", "P", "P", "-"],          // 4 slot day
@@ -234,15 +235,16 @@ box-shadow:0 2px 12px rgba(0,0,0,0.06);}
 
 <?php
 $subjects = [
-    "Operating Systems"          => ["present" => 02, "total" => 02],
+    "Operating Systems"          => ["present" => 03, "total" => 03],
     "Operating Systems Lab"      => ["present" => 01, "total" => 01],
     "Python"                     => ["present" => 02, "total" => 02],
     "Python Lab"                 => ["present" => 01, "total" => 01],
     "Networking"                 => ["present" => 02, "total" => 02],
     "Networking Lab"             => ["present" => 01, "total" => 01],
-    "Software Engineering"       => ["present" => 02, "total" => 02],
+    "Software Engineering"       => ["present" => 03, "total" => 03],
     "Software Engineering Lab"   => ["present" => 01, "total" => 01],
-    "Cryptography"               => ["present" => 01, "total" => 01]
+    "Cryptography"               => ["present" => 02, "total" => 02],
+    "PGPD"                       => ["present" => 01, "total" => 0]
 ];
 ?>
 
