@@ -105,6 +105,8 @@ body {
 // You can add/remove dates and slots anytime.
 
 $attendance = [
+    "2025-12-02" => ["P", "P", "P", "P", "P"],     // 5 slots day
+    "2025-12-01" => ["P", "P", "P", "P", "-"],     // 4 slots day
     "2025-11-28" => ["P", "P", "P", "A", "-"],     // 4 slots day
     "2025-11-27" => ["P", "P", "P", "P", "P"],     // 5 slots day
     "2025-11-25" => ["P", "P", "P", "P", "P"],     // 5 slots day
