@@ -94,6 +94,10 @@ body {
   <button class="back-btn" onclick="openPage('home')"><i class="bi bi-arrow-left"></i> Back</button>
   <h3>Attendance</h3>
    <!-- ATTENDANCE -->
+  
+<div style="background:#000; color:#fff; padding:12px 14px; border-radius:10px; font-size:14px; font-weight:600; margin:10px 0; text-align:center;">
+  ⏳ Attendance refreshes at 3:00 AM daily • Weekly summary below
+</div>
 
 
 <?php
