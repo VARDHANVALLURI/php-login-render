@@ -237,15 +237,15 @@ box-shadow:0 2px 12px rgba(0,0,0,0.06);}
 
 <?php
 $subjects = [
-    "Operating Systems"          => ["present" => 03, "total" => 03],
+    "Operating Systems"          => ["present" => 04, "total" => 04],
     "Operating Systems Lab"      => ["present" => 01, "total" => 01],
-    "Python"                     => ["present" => 02, "total" => 02],
-    "Python Lab"                 => ["present" => 01, "total" => 01],
-    "Networking"                 => ["present" => 02, "total" => 02],
-    "Networking Lab"             => ["present" => 01, "total" => 01],
-    "Software Engineering"       => ["present" => 03, "total" => 03],
-    "Software Engineering Lab"   => ["present" => 01, "total" => 01],
-    "Cryptography"               => ["present" => 02, "total" => 02],
+    "Python"                     => ["present" => 03, "total" => 03],
+    "Python Lab"                 => ["present" => 02, "total" => 02],
+    "Networking"                 => ["present" => 03, "total" => 03],
+    "Networking Lab"             => ["present" => 02, "total" => 02],
+    "Software Engineering"       => ["present" => 05, "total" => 05],
+    "Software Engineering Lab"   => ["present" => 02, "total" => 02],
+    "Cryptography"               => ["present" => 03, "total" => 03],
     "PGPD"                       => ["present" => 01, "total" => 0]
 ];
 ?>
