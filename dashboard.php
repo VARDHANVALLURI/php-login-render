@@ -20,6 +20,17 @@ if (!isset($_SESSION['student'])) {
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+  @keyframes fadeSlide {
+  from { opacity:0; transform:translateX(100%); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
+@keyframes fadeSlideBack {
+  from { opacity:0; transform:translateX(-100%); }
+  to   { opacity:1; transform:translateX(0); }
+}
+
 body {
   margin:0; padding:0; background:#f5f6fa;
   font-family:'Inter',sans-serif; overflow-x:hidden;
@@ -656,14 +667,26 @@ function openMenu(id){
 
 
 <script>
-function openPage(pageId){
-  const pages = ['home','attendance','student','hostel','results','fees'];
-  pages.forEach(p=>{
-    document.getElementById(p).style.display = (p === pageId) ? "block" : "none";
+function openPage(pageId, back = false){
+  // Remove active from all pages
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.remove("active");
   });
+
+  // Add active to selected page
+  const pg = document.getElementById(pageId);
+  pg.classList.add("active");
+
+  // Play animation
+  pg.style.animation = back
+    ? "fadeSlideBack .35s ease"
+    : "fadeSlide .35s ease";
+
+  // Scroll to top
   window.scrollTo(0,0);
 }
 </script>
+
 
 </body>
 </html>
