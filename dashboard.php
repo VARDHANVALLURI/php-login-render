@@ -109,6 +109,7 @@ body {
 // You can add/remove dates and slots anytime.
 
 $attendance = [
+    "2025-12-04" => ["P", "P", "P", "P", "P"],     // 5 slots day
     "2025-12-02" => ["P", "P", "P", "P", "P"],     // 5 slots day
     "2025-12-01" => ["P", "P", "P", "P", "-"],     // 4 slots day
     "2025-11-28" => ["P", "P", "P", "A", "-"],     // 4 slots day
@@ -241,15 +242,15 @@ box-shadow:0 2px 12px rgba(0,0,0,0.06);}
 
 <?php
 $subjects = [
-    "Operating Systems"          => ["present" => 04, "total" => 04],
-    "Operating Systems Lab"      => ["present" => 01, "total" => 01],
-    "Python"                     => ["present" => 03, "total" => 03],
+    "Operating Systems"          => ["present" => 05, "total" => 05],
+    "Operating Systems Lab"      => ["present" => 02, "total" => 02],
+    "Python"                     => ["present" => 04, "total" => 04],
     "Python Lab"                 => ["present" => 02, "total" => 02],
-    "Networking"                 => ["present" => 03, "total" => 03],
+    "Networking"                 => ["present" => 04, "total" => 04],
     "Networking Lab"             => ["present" => 02, "total" => 02],
     "Software Engineering"       => ["present" => 05, "total" => 05],
     "Software Engineering Lab"   => ["present" => 02, "total" => 02],
-    "Cryptography"               => ["present" => 03, "total" => 03],
+    "Cryptography"               => ["present" => 04, "total" => 04],
     "PGPD"                       => ["present" => 01, "total" => 0]
 ];
 ?>
@@ -527,42 +528,119 @@ $subjects = [
   <h3>Fee Status</h3>
 
 <style>
-.fee-card{
+.dashboard-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+.dash-card{
   background:#fff;
-  padding:16px;
-  border-radius:14px;
-  margin-top:14px;
-  box-shadow:0 2px 12px rgba(0,0,0,0.06);
-}
-
-.fee-success{
-  background:#e8fbe8;
-  color:#0d8a26;
-  font-weight:600;
-  padding:14px;
   border-radius:12px;
-  text-align:center;
+  padding:22px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.08);
+}
+.dash-value{
+  font-size:34px;
+  font-weight:700;
+}
+.dash-title{
   font-size:15px;
-  line-height:1.6;
+  margin-top:8px;
+  font-weight:600;
 }
-
-.fee-note{
-  font-size:13px;
-  color:#444;
-  margin-top:10px;
-  text-align:center;
+.dash-line{
+  width:100%;
+  height:5px;
+  border-radius:6px;
+  margin-top:6px;
 }
+.green-line{background:#20bf6b;}
+.blue-line{background:#2980b9;}
+.gold-line{background:#c49a38;}
+.red-line{background:#e74c3c;}
+.icon{float:right;font-size:28px;}
 </style>
 
-<div class="fee-card">
-  <div class="fee-success">
-    ALL TUITION & HOSTEL FEES HAVE BEEN CLEARED FOR A.Y 2025–26.<br>
-    LOGIN TO <b>GNUMS</b> PORTAL TO DOWNLOAD FEE RECEIPTS.
+<!-- Summary Cards -->
+<div class="dashboard-row">
+  <div class="dash-card">
+    <div class="dash-value" style="color:#20bf6b;">5,95,500</div>
+    <div class="icon">🎓</div>
+    <div class="dash-line green-line"></div>
+    <div class="dash-title">Fees To Be Collected</div>
   </div>
 
-  <div class="fee-note">
-    Last Updated: 26-Nov-2025 • For errors contact Accounts Office
+  <div class="dash-card">
+    <div class="dash-value" style="color:#2980b9;">0</div>
+    <div class="icon">🔄</div>
+    <div class="dash-line blue-line"></div>
+    <div class="dash-title">Previously Paid</div>
   </div>
+
+  <div class="dash-card">
+    <div class="dash-value" style="color:#c49a38;">5,95,500</div>
+    <div class="icon">✔️</div>
+    <div class="dash-line gold-line"></div>
+    <div class="dash-title">Paid</div>
+  </div>
+
+  <div class="dash-card">
+    <div class="dash-value" style="color:#e74c3c;">0</div>
+    <div class="icon">₹</div>
+    <div class="dash-line red-line"></div>
+    <div class="dash-title">Outstanding Amount</div>
+  </div>
+</div>
+
+<br>
+
+<!-- ACADEMIC FEE DETAILS TABLE -->
+<h4 style="font-weight:700;margin-top:10px;">Academic Fee Details</h4>
+
+<div class="table-responsive" style="margin-top:10px;">
+  <table class="table table-bordered text-center">
+    <thead style="background:#f8fafc;font-weight:700;">
+      <tr>
+        <th>Sr</th>
+        <th>Semester</th>
+        <th>Fees To Be Collected</th>
+        <th>Refunded</th>
+        <th>Previously Paid</th>
+        <th>Paid</th>
+        <th>Outstanding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>1</td><td>1,75,000</td><td>50,000</td><td>0</td><td>1,75,000</td><td>0</td></tr>
+      <tr><td>2</td><td>2</td><td>1,75,000</td><td>0</td><td>0</td><td>1,75,000</td><td>0</td></tr>
+      <tr style="font-weight:700;background:#f5f5f5;"><td colspan="2">Total</td><td>3,50,000</td><td>50,000</td><td>0</td><td>3,50,000</td><td>0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- HOSTEL FEE DETAILS -->
+<h4 style="font-weight:700;margin-top:20px;">Hostel Fee Details</h4>
+
+<div class="table-responsive" style="margin-top:10px;">
+  <table class="table table-bordered text-center">
+    <thead style="background:#f8fafc;font-weight:700;">
+      <tr>
+        <th>Sr</th>
+        <th>Hostel</th>
+        <th>Year</th>
+        <th>Room Type</th>
+        <th>Fees To Be Collected</th>
+        <th>Paid</th>
+        <th>Outstanding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>TAGORE BHAWAN - A</td><td>2024-25</td><td>Non AC</td><td>1,19,500</td><td>1,19,500</td><td>0</td></tr>
+      <tr><td>2</td><td>TAGORE BHAWAN - C</td><td>2025-26</td><td>Non AC</td><td>1,24,000</td><td>1,24,000</td><td>0</td></tr>
+      <tr style="font-weight:700;background:#f5f5f5;"><td colspan="4">Total</td><td>2,43,500</td><td>2,43,500</td><td>0</td></tr>
+    </tbody>
+  </table>
 </div>
 
 </section>
