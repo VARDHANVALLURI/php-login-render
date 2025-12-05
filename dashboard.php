@@ -21,6 +21,34 @@ body {
   margin:0; padding:0; background:#f5f6fa;
   font-family:'Inter',sans-serif; overflow-x:hidden;
 }
+  /* ==================== MESS MENU STYLE ==================== */
+
+.tab-buttons {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 12px;
+  padding-bottom: 5px;
+  scrollbar-width: none;       /* hide scrollbar */
+}
+.tab-buttons::-webkit-scrollbar {
+  display: none;               /* hide scrollbar for chrome */
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #e5e7eb;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.25s;
+  font-size: 15px;
+}
+
+.tab-btn.a
+
 
 /* Header */
 .header {
@@ -614,6 +642,7 @@ $subjects = [
 
 
 <script>
+
 function openPage(pageId){
   const pages = ['home','attendance','student','hostel','results','fees'];
   pages.forEach(p=>{
@@ -621,6 +650,16 @@ function openPage(pageId){
   });
   window.scrollTo(0,0);
 }
+
+function openMenu(id){
+  document.querySelectorAll(".menu-box").forEach(box => box.style.display = "none");
+  document.getElementById(id).style.display = "block";
+
+  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+  event.target.classList.add("active");
+}
+</script>
+
 </script>
 
 </body>
