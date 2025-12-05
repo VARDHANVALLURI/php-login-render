@@ -10,7 +10,7 @@ if (!isset($_SESSION['student'])) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title> Student Dashboard </title>
+<title>  </title>
 
 <!-- Core UI Libraries -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -103,22 +103,13 @@ body {
   </div>
 
   <div class="grid-menu">
-    <div class="menu-btn" onclick="openPage('attendance')">
-      <i class="fa-solid fa-calendar-check"></i>Attendance
-    </div>
-    <div class="menu-btn" onclick="openPage('results')">
-      <i class="fa-solid fa-chart-line"></i>Results
-    </div>
-    <div class="menu-btn" onclick="openPage('fees')">
-      <i class="fa-solid fa-money-check-pen"></i>Fees
-    </div>
-    <div class="menu-btn" onclick="openPage('student')">
-      <i class="fa-solid fa-address-card"></i>Student Info
-    </div>
-    <div class="menu-btn" onclick="openPage('hostel')">
-      <i class="fa-solid fa-building-columns"></i>Hostel
-    </div>
+    <div class="menu-btn" onclick="openPage('attendance')"><i class="fa-solid fa-calendar-check"></i>Attendance</div>
+    <div class="menu-btn" onclick="openPage('results')"><i class="fa-solid fa-chart-line"></i>Results</div>
+    <div class="menu-btn" onclick="openPage('fees')"><i class="fa-solid fa-receipt"></i>Fees</div>
+    <div class="menu-btn" onclick="openPage('student')"><i class="fa-solid fa-address-card"></i>Student Info</div>
+    <div class="menu-btn" onclick="openPage('hostel')"><i class="fa-solid fa-building-columns"></i>Hostel</div>
   </div>
+ 
 </section>
 
   <!-- ================= ATTENDANCE PAGE ================ -->
