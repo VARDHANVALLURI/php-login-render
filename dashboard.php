@@ -654,19 +654,18 @@ function openMenu(id){
 
 </section>
 
+
 <script>
-function openPage(pageId, back = false){
-  document.querySelectorAll(".page").forEach(p => {
-    p.classList.remove("active");
+function openPage(pageId){
+  const pages = ['home','attendance','student','hostel','results','fees'];
+  pages.forEach(p=>{
+    document.getElementById(p).style.display = (p === pageId) ? "block" : "none";
   });
-
-  const pg = document.getElementById(pageId);
-  pg.classList.add("active");
-
-  pg.style.animation = back ? "fadeSlideBack .35s ease" : "fadeSlide .35s ease";
-
   window.scrollTo(0,0);
 }
 </script>
+
+</body>
+</html>
 
   
