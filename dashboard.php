@@ -10,10 +10,13 @@ if (!isset($_SESSION['student'])) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title> </title>
+<title> Student Dashboard </title>
 
+<!-- Core UI Libraries -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -22,18 +25,41 @@ body {
   font-family:'Inter',sans-serif; overflow-x:hidden;
 }
 
-/* Header */
+/* Fixed Header */
 .header {
   width:100%; background:#000; color:#fff;
-  padding:15px; font-weight:700; font-size:19px; text-align:center;
+  padding:15px; font-weight:700; font-size:19px;
+  text-align:center; position:fixed; top:0; left:0; z-index:999;
 }
 
-/* Main pages */
-.page { display:none; padding:18px; }
-#home { display:block; }
+/* Page Animation */
+.page {
+  display:none;
+  padding:18px;
+  position:absolute;
+  width:100%;
+  top:65px; /* below header */
+  left:0;
+  opacity:0;
+  transform: translateX(100%);
+  transition: transform .35s ease, opacity .35s ease;
+}
 
-/* Profile Circle */
-.profile-box { text-align:center; margin-top:20px; }
+.page.active {
+  display:block;
+  opacity:1;
+  transform: translateX(0);
+}
+
+.page.back {
+  transform: translateX(-100%);
+  opacity:0;
+}
+
+/* Home Page Profile */
+.profile-box {
+  text-align:center; margin-top:15px;
+}
 .profile-box img {
   width:110px; height:110px; border-radius:50%;
   object-fit:cover; border:3px solid #fff;
@@ -41,22 +67,21 @@ body {
 .profile-box h3 { margin-top:10px; font-weight:700; }
 .profile-box p { color:#555; margin:3px 0; }
 
-/* Grid menu */
+/* Menu Grid */
 .grid-menu {
   display:grid; grid-template-columns:repeat(2,1fr);
   gap:15px; margin-top:24px;
 }
 .menu-btn {
   background:#fff; padding:20px; border-radius:16px;
-  text-align:center; box-shadow:0 4px 14px rgba(0,0,0,0.12);
-  font-weight:600; cursor:pointer;
+  text-align:center; font-weight:600;
+  box-shadow:0 4px 14px rgba(0,0,0,0.12);
+  cursor:pointer; transition:.25s;
 }
-.menu-btn i {
-  font-size:32px; margin-bottom:8px; display:block;
-}
-.menu-btn:hover { background:#e8e8e8; }
+.menu-btn i { font-size:34px; margin-bottom:8px; display:block; }
+.menu-btn:hover { background:#ececec; transform:scale(1.04); }
 
-/* Back button */
+/* Back Button */
 .back-btn {
   background:none; border:none; font-size:20px;
   font-weight:700; margin-bottom:15px; cursor:pointer;
@@ -66,11 +91,10 @@ body {
 
 <body>
 
-<div class="header"> </div>
+<div class="header">Student Dashboard</div>
 
-<!-- ================= HOME PAGE ================ -->
-<section id="home" class="page" style="display:block;">
-
+<!-- HOME PAGE -->
+<section id="home" class="page active">
   <div class="profile-box">
     <img src="your_profile_small.jpg" alt="Profile">
     <h3>VALLURI SRI KRISHNA VARDAN</h3>
@@ -79,284 +103,219 @@ body {
   </div>
 
   <div class="grid-menu">
-    <div class="menu-btn" onclick="openPage('attendance')"><i class="bi bi-clipboard2-check"></i>Attendance</div>
-    <div class="menu-btn" onclick="openPage('results')"><i class="bi bi-bar-chart"></i>Results</div>
-    <div class="menu-btn" onclick="openPage('fees')"><i class="bi bi-cash-coin"></i>Fees</div>
-    <div class="menu-btn" onclick="openPage('student')"><i class="bi bi-person-vcard"></i>Student Info</div>
-    <div class="menu-btn" onclick="openPage('hostel')"><i class="bi bi-building"></i>Hostel</div>
+    <div class="menu-btn" onclick="openPage('attendance')">
+      <i class="fa-solid fa-calendar-check"></i>Attendance
+    </div>
+    <div class="menu-btn" onclick="openPage('results')">
+      <i class="fa-solid fa-chart-line"></i>Results
+    </div>
+    <div class="menu-btn" onclick="openPage('fees')">
+      <i class="fa-solid fa-money-check-pen"></i>Fees
+    </div>
+    <div class="menu-btn" onclick="openPage('student')">
+      <i class="fa-solid fa-address-card"></i>Student Info
+    </div>
+    <div class="menu-btn" onclick="openPage('hostel')">
+      <i class="fa-solid fa-building-columns"></i>Hostel
+    </div>
   </div>
-
 </section>
 
-
-<!-- ================= ATTENDANCE PAGE ================ -->
+  <!-- ================= ATTENDANCE PAGE ================ -->
 <section id="attendance" class="page">
-  <button class="back-btn" onclick="openPage('home')"><i class="bi bi-arrow-left"></i> Back</button>
+
+  <button class="back-btn" onclick="openPage('home', true)">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+
   <h3>Attendance</h3>
-   <!-- ATTENDANCE -->
-  
+
 <div style="background:#000; color:#fff; padding:12px 14px; border-radius:10px; font-size:14px; font-weight:600; margin:10px 0; text-align:center;">
   ⏳ Attendance refreshes at 3:00 AM daily • Weekly summary below
 </div>
 
-
 <?php
-/* ---------------------
-   MANUAL ATTENDANCE DATA
-   --------------------- */
-
-// Each date contains slot values: "P" (Present), "A" (Absent), "-" (No class)
-// You can add/remove dates and slots anytime.
-
 $attendance = [
-    "2025-12-04" => ["P", "P", "P", "P", "P"],     // 5 slots day
-    "2025-12-02" => ["P", "P", "P", "P", "P"],     // 5 slots day
-    "2025-12-01" => ["P", "P", "P", "P", "-"],     // 4 slots day
-    "2025-11-28" => ["P", "P", "P", "A", "-"],     // 4 slots day
-    "2025-11-27" => ["P", "P", "P", "P", "P"],     // 5 slots day
-    "2025-11-25" => ["P", "P", "P", "P", "P"],     // 5 slots day
-    "2025-11-24" => ["P", "P", "P", "-"],          // 4 slot day
-    
+    "2025-12-04" => ["P","P","P","P","P"],
+    "2025-12-02" => ["P","P","P","P","P"],
+    "2025-12-01" => ["P","P","P","P","-"],
+    "2025-11-28" => ["P","P","P","A","-"],
+    "2025-11-27" => ["P","P","P","P","P"],
+    "2025-11-25" => ["P","P","P","P","P"],
+    "2025-11-24" => ["P","P","P","-"]
 ];
-    
-// Calculate totals
+
 $totalPresent = 0;
 $totalSlots = 0;
 
 foreach ($attendance as $date => $slots) {
-    foreach ($slots as $s) {
-        if ($s === "P") $totalPresent++;
-        if ($s === "P" || $s === "A") $totalSlots++;
-    }
+  foreach ($slots as $s) {
+    if ($s === "P") $totalPresent++;
+    if ($s === "P" || $s === "A") $totalSlots++;
+  }
 }
 
-$percent = $totalSlots > 0 ? round(($totalPresent / $totalSlots) * 100, 2) : 0;
-
-// Maximum slots = 5
+$percent = $totalSlots > 0 ? round(($totalPresent / $totalSlots) * 100,2) : 0;
 $maxSlots = 5;
 
-// Helper to get weekday
-function getDayName($date) {
-    return date("D", strtotime($date));
+function getDayName($date){
+  return date("D", strtotime($date));
 }
 ?>
 
 <style>
 .att-card{background:#fff;border-radius:14px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,0.06);margin-bottom:14px;}
 .att-title{font-size:20px;font-weight:700;}
-.att-sub{font-size:14px;color:#555;margin-top:2px;}
-.att-bar{width:100%;height:9px;background:#e3e3e3;border-radius:10px;margin-top:10px;overflow:hidden;}
+.att-sub{font-size:14px;color:#555;}
+.att-bar{width:100%;height:9px;background:#e1e1e1;border-radius:10px;margin-top:10px;}
 .att-bar-fill{height:100%;background:#26c85f;}
+
 .att-percent{text-align:right;font-weight:700;color:#1fa950;margin-top:4px;}
 
-.att-status-box{display:flex;justify-content:space-between;background:#fff;padding:14px;border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);font-size:14px;margin-bottom:14px;}
+.att-status-box{
+  display:flex;justify-content:space-between;background:#fff;padding:14px;border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);font-size:14px;margin-bottom:14px;
+}
 .att-ok{color:#27ae60;font-weight:600;}
 .att-bad{color:#e74c3c;font-weight:600;}
 .att-mid{color:#e67e22;font-weight:600;}
 .att-info{color:#3498db;font-weight:600;}
-.att-legend{font-size:13px;color:#444;margin-bottom:8px;}
 
-.att-table{background:#fff;border-radius:14px;overflow:hidden;
-box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.att-table{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
 .att-header,.att-row{display:flex;padding:12px;border-bottom:1px solid #eee;}
 .att-header{background:#f8fafc;font-weight:700;}
 .att-col{flex:1;text-align:center;}
 
-.att-slot-p{background:#e7fbe9;color:#27ae60;font-weight:700;border-radius:10px;padding:6px 0;}
-.att-slot-a{background:#fdecea;color:#c0392b;font-weight:700;border-radius:10px;padding:6px 0;}
-.att-slot-n{background:#f0f0f0;color:#666;border-radius:10px;padding:6px 0;}
-</style>
-
-
-<!-- TOP CARD -->
-<div class="att-card">
-    <div class="att-title">Sem 4</div>
-    <div class="att-sub">A.Y. 2025–26 • Even</div>
-
-    <div class="att-bar">
-        <div class="att-bar-fill" style="width: <?= $percent ?>%;"></div>
-    </div>
-
-    <div class="att-percent"><?= $percent ?>%</div>
-</div>
-
-<!-- STATUS ROW -->
-<div class="att-status-box">
-    <div class="att-ok">Present: <b><?= $totalPresent ?> / <?= $totalSlots ?></b></div>
-    <div class="att-bad">Absent: <b><?= $totalSlots - $totalPresent ?></b></div>
-    <div class="att-mid">Pending: <b>0</b></div>
-    <div class="att-info">No Attendance: <b>0</b></div>
-</div>
-
-<div class="att-legend">P = Present, A = Absent, – = No Lecture/Lab</div>
-
-<!-- DYNAMIC TABLE -->
-<div class="att-table">
-
-    <!-- TABLE HEADER -->
-    <div class="att-header">
-        <div class="att-col">Date</div>
-        <?php for ($i=1; $i <= $maxSlots; $i++): ?>
-            <div class="att-col">Slot <?= $i ?></div>
-        <?php endfor; ?>
-    </div>
-
-    <!-- TABLE ROWS -->
-    <?php foreach ($attendance as $date => $slots): ?>
-        <div class="att-row">
-
-            <!-- DATE + DAY -->
-            <div class="att-col">
-                <?= date("d-M-y", strtotime($date)) ?><br>
-                <span style="font-size:12px;color:#777;"><?= getDayName($date) ?></span>
-            </div>
-
-            <!-- SLOT VALUES -->
-            <?php for ($i=0; $i < $maxSlots; $i++): ?>
-
-                <div class="att-col">
-                    <?php
-                    if (!isset($slots[$i])) {
-                        echo '<div class="att-slot-n">-</div>';
-                    } else if ($slots[$i] === "P") {
-                        echo '<div class="att-slot-p">P</div>';
-                    } else if ($slots[$i] === "A") {
-                        echo '<div class="att-slot-a">A</div>';
-                    } else {
-                        echo '<div class="att-slot-n">-</div>';
-                    }
-                    ?>
-                </div>
-
-            <?php endfor; ?>
-
-        </div>
-    <?php endforeach; ?>
-
-</div>
-
-  <!-- SUBJECT WISE ATTENDANCE -->
-<br><br>
-<h4 class="section-title">Subject Wise Attendance</h4>
-
-<?php
-$subjects = [
-    "Operating Systems"          => ["present" => 05, "total" => 05],
-    "Operating Systems Lab"      => ["present" => 02, "total" => 02],
-    "Python"                     => ["present" => 04, "total" => 04],
-    "Python Lab"                 => ["present" => 02, "total" => 02],
-    "Networking"                 => ["present" => 04, "total" => 04],
-    "Networking Lab"             => ["present" => 02, "total" => 02],
-    "Software Engineering"       => ["present" => 05, "total" => 05],
-    "Software Engineering Lab"   => ["present" => 02, "total" => 02],
-    "Cryptography"               => ["present" => 04, "total" => 04],
-    "PGPD"                       => ["present" => 01, "total" => 0]
-];
-?>
-
-<style>
+.att-slot-p{background:#e6f9e8;color:#27ae60;font-weight:700;border-radius:10px;padding:6px 0;}
+.att-slot-a{background:#ffeaea;color:#c0392b;font-weight:700;border-radius:10px;padding:6px 0;}
+.att-slot-n{background:#ececec;color:#555;border-radius:10px;padding:6px 0;}
 .sub-card{
-  background:#fff;
-  padding:14px;
-  border-radius:14px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.06);
-  margin-bottom:12px;
+  background:#fff;padding:14px;border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.06);margin-bottom:12px;
 }
 .sub-name{font-size:16px;font-weight:700;margin-bottom:6px;}
-.sub-info{font-size:14px;color:#555;}
 </style>
 
-<?php foreach($subjects as $name => $data): ?>
+<div class="att-card">
+  <div class="att-title">Sem 4</div>
+  <div class="att-sub">A.Y. 2025–26 • Even</div>
+
+  <div class="att-bar">
+    <div class="att-bar-fill" style="width: <?= $percent ?>%;"></div>
+  </div>
+  <div class="att-percent"><?= $percent ?>%</div>
+</div>
+
+<div class="att-status-box">
+  <div class="att-ok">Present: <b><?= $totalPresent ?> / <?= $totalSlots ?></b></div>
+  <div class="att-bad">Absent: <b><?= $totalSlots - $totalPresent ?></b></div>
+  <div class="att-mid">Pending: <b>0</b></div>
+  <div class="att-info">No Attendance: <b>0</b></div>
+</div>
+
+<div class="att-table">
+  <div class="att-header">
+    <div class="att-col">Date</div>
+    <?php for ($i=1;$i<=$maxSlots;$i++): ?>
+      <div class="att-col">Slot <?= $i ?></div>
+    <?php endfor; ?>
+  </div>
+
+  <?php foreach ($attendance as $date=>$slots): ?>
+  <div class="att-row">
+    <div class="att-col">
+      <?= date("d-M-y", strtotime($date)) ?><br>
+      <span style="font-size:11px;color:#777;"><?= getDayName($date) ?></span>
+    </div>
+
+    <?php for ($i=0;$i<$maxSlots;$i++): ?>
+      <div class="att-col">
+        <?php
+          if (!isset($slots[$i])) echo '<div class="att-slot-n">-</div>';
+          else if ($slots[$i] == "P") echo '<div class="att-slot-p">P</div>';
+          else if ($slots[$i] == "A") echo '<div class="att-slot-a">A</div>';
+          else echo '<div class="att-slot-n">-</div>';
+        ?>
+      </div>
+    <?php endfor; ?>
+
+  </div>
+  <?php endforeach; ?>
+</div>
+
+<br><h4 class="section-title">Subject Wise Attendance</h4>
 <?php
-    $present = $data["present"];
-    $total   = $data["total"];
-    $absent  = $total - $present;
+$subjects=[
+"Operating Systems"=>["present"=>05,"total"=>05],
+"Operating Systems Lab"=>["present"=>02,"total"=>02],
+"Python"=>["present"=>04,"total"=>04],
+"Python Lab"=>["present"=>02,"total"=>02],
+"Networking"=>["present"=>04,"total"=>04],
+"Networking Lab"=>["present"=>02,"total"=>02],
+"Software Engineering"=>["present"=>05,"total"=>05],
+"Software Engineering Lab"=>["present"=>02,"total"=>02],
+"Cryptography"=>["present"=>04,"total"=>04],
+"PGPD"=>["present"=>01,"total"=>0]
+];
+
+foreach($subjects as $name=>$data):
+$present=$data["present"];
+$total=$data["total"];
+$absent=$total-$present;
 ?>
 
 <div class="sub-card">
-    <div class="sub-name"><?= $name ?></div>
-
-    <div class="sub-info">
-        Present: <b><?= $present ?></b> / <?= $total ?><br>
-        Absent: <b><?= $absent ?></b> / <?= $total ?>
-    </div>
+  <div class="sub-name"><?= $name ?></div>
+  <div>Present: <b><?= $present ?></b> / <?= $total ?> &nbsp; | &nbsp; Absent: <b><?= $absent ?></b></div>
 </div>
 
 <?php endforeach; ?>
 
-</section>   <!-- CLOSE ATTENDANCE SECTION -->
+</section>
 
-
-
-<!-- ================= STUDENT INFO PAGE ================ -->
-<section id="student" class="page" style="display:none">
-  <button class="back-btn" onclick="openPage('home')">
+  <!-- ================= STUDENT INFO PAGE ================ -->
+<section id="student" class="page">
+  <button class="back-btn" onclick="openPage('home', true)">
     <i class="bi bi-arrow-left"></i> Back
   </button>
+
   <h3>Student Information</h3>
 
-  <div class="card-box">
+  <div class="card-box text-center mt-3 mb-4">
+    <img src="your_profile_medium.jpg" alt="Student"
+      style="width:160px;height:160px;object-fit:cover;border-radius:14px;border:3px solid #d1d1d1;">
+    <h5 class="fw-bold mt-3 mb-1">VALLURI SRI KRISHNA VARDAN</h5>
+    <div class="text-muted">Roll No: 2403031260215 | CSE (4CYBER3)</div>
+  </div>
 
-    <!-- Profile photo -->
-    <div class="profile-pic text-center mb-3">
-      <img 
-        src="your_profile_medium.jpg"
-        alt="Student Photo"
-        style="width:160px;height:160px;object-fit:cover;border-radius:14px;border:3px solid #d0d0d0;">
-      <h5 class="fw-bold mt-3 mb-1">VALLURI SRI KRISHNA VARDAN</h5>
-      <div class="text-muted">Roll No: 2403031260215 | CSE (4CYBER3)</div>
-    </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+    <div class="card p-3"><div class="text-muted">DOB</div><div class="fw-bold mt-1">28-11-2006</div></div>
+    <div class="card p-3"><div class="text-muted">Phone</div><div class="fw-bold mt-1">6281048554</div></div>
+    <div class="card p-3"><div class="text-muted">College Email</div>
+      <div class="fw-bold mt-1">2403031260215@paruluniversity.ac.in</div></div>
+    <div class="card p-3"><div class="text-muted">Personal Email</div>
+      <div class="fw-bold mt-1">krishnavardhan124@gmail.com</div></div>
+  </div>
 
-    <!-- Information grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">DOB</div>
-        <div style="font-weight:600;margin-top:6px;">28-11-2006</div>
-      </div>
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">Student Phone</div>
-        <div style="font-weight:600;margin-top:6px;">6281048554</div>
-      </div>
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">College Email</div>
-        <div style="word-break:break-all;font-weight:600;margin-top:6px;">
-          2403031260215@paruluniversity.ac.in
-        </div>
-      </div>
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">Personal Email</div>
-        <div style="word-break:break-all;font-weight:600;margin-top:6px;">
-          krishnavardhan124@gmail.com
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Parents -->
-    <div style="margin-top:18px;">
-      <div class="section-title">Parents / Guardian</div>
-      <p><strong>Father:</strong> VALLURI VENKATA KRISHNANANDA CHOWDARY | 9951996671</p>
-      <p><strong>Mother:</strong> VALLURI VISALAKSHI | 6301244329</p>
-    </div>
-
+  <div class="card p-3 mt-3">
+    <h5 class="fw-bold">Parents / Guardian</h5>
+    <p><strong>Father:</strong> VALLURI VENKATA KRISHNANANDA CHOWDARY | 9951996671</p>
+    <p><strong>Mother:</strong> VALLURI VISALAKSHI | 6301244329</p>
   </div>
 </section>
 
 
 <!-- ================= HOSTEL PAGE ================ -->
-<section id="hostel" class="page" style="display:none">
-  <button class="back-btn" onclick="openPage('home')">
+<section id="hostel" class="page">
+
+  <button class="back-btn" onclick="openPage('home', true)">
     <i class="bi bi-arrow-left"></i> Back
   </button>
+
   <h3>Hostel</h3>
 
-  <div class="card" style="margin-top:10px;">
-    <h4 class="section-title">Hostel Details</h4>
+  <div class="card p-3 mt-2">
+    <h5 class="fw-bold">Hostel Details</h5>
     <p><strong>Reg No:</strong> 42043</p>
     <p><strong>Block:</strong> TAGORE BHAWAN - C (Non AC)</p>
     <p><strong>Room:</strong> Floor 3 | Room C-361 | Bed 3</p>
@@ -365,160 +324,103 @@ $subjects = [
     <p><strong>Address:</strong> HOUSE NO-1-18 MAIN ROAD, NELAPARTHIPADU, DRAKSHARAMAM</p>
   </div>
 
-  <div class="card" style="margin-top:14px;">
-    <h4 class="section-title">Recent Gate Passes</h4>
 
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Sr</th>
-            <th>Reason</th>
-            <th>Place</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+  <!-- RECENT GATE PASS -->
+  <div class="card mt-3 p-3">
+    <h5 class="fw-bold">Recent Gate Passes</h5>
 
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Holiday</td>
-            <td>HOME</td>
-            <td>17-10-2025</td>
-            <td>02-11-2025</td>
-            <td><span class="badge bg-success">Approved</span></td>
-          </tr>
+    <table class="table table-bordered text-center mt-2">
+      <thead class="fw-bold bg-light">
+        <tr>
+          <th>Sr</th><th>Reason</th><th>Place</th><th>From</th><th>To</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Holiday</td><td>HOME</td><td>17-10-2025</td><td>02-11-2025</td><td><span class="badge bg-success">Approved</span></td></tr>
+        <tr><td>2</td><td>Personal</td><td>PAVGADH</td><td>19-07-2025</td><td>19-07-2025</td><td><span class="badge bg-success">Approved</span></td></tr>
+      </tbody>
+    </table>
 
-          <tr>
-            <td>2</td>
-            <td>Personal</td>
-            <td>PAVGADH</td>
-            <td>19-07-2025</td>
-            <td>19-07-2025</td>
-            <td><span class="badge bg-success">Approved</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div style="padding:10px 0; text-align:center; font-size:13px; color:#555;">
-      <b>NOTE:</b> Only recent gate passes will be shown.
-    </div>
+    <p class="text-center" style="font-size:13px;color:#555;">ONLY RECENT GATE PASSES WILL BE SHOWN.</p>
   </div>
 
-  <!-- ================= MESS MENU WITH TABS ================= -->
-<h4 class="section-title" style="margin-top:28px;font-weight:700;">Mess Menu (01 Dec - 08 Dec 2025)</h4>
 
-<style>
-.tab-buttons {display:flex;overflow-x:auto;gap:10px;margin-top:14px;}
-.tab-buttons button{
-  padding:10px 16px;border:none;border-radius:10px;
-  font-weight:600;cursor:pointer;white-space:nowrap;
-  background:#e5e7eb;
-}
-.tab-buttons button.active{background:#000;color:#fff;}
+  <!-- ================= MESS MENU TABS ================= -->
+  <h4 class="fw-bold mt-4">Mess Menu</h4>
 
-.menu-box{
-  background:#fff;margin-top:16px;padding:16px;border-radius:14px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.08);
-}
-.menu-title{font-weight:700;font-size:18px;margin-bottom:10px;color:#333;}
-.menu-item{margin-bottom:8px;font-size:15px;font-weight:500;color:#444;}
-</style>
+  <style>
+  .tab-buttons {
+    display:flex;overflow-x:auto;gap:10px;margin-top:12px;
+  }
+  .tab-buttons button {
+    padding:10px 16px; border:none; border-radius:10px;
+    background:#e5e7eb; font-weight:600; cursor:pointer; white-space:nowrap;
+  }
+  .tab-buttons button.active { background:#000; color:#fff; }
+  .menu-box {
+    background:#fff; margin-top:16px; padding:16px; border-radius:14px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+  }
+  .menu-title {font-weight:700;font-size:18px;margin-bottom:6px;}
+  .menu-item {margin-bottom:8px;font-size:15px;font-weight:500;color:#444;}
+  </style>
 
-<div class="tab-buttons">
-  <button class="tab-btn active" onclick="openMenu('mon')">Monday</button>
-  <button class="tab-btn" onclick="openMenu('tue')">Tuesday</button>
-  <button class="tab-btn" onclick="openMenu('wed')">Wednesday</button>
-  <button class="tab-btn" onclick="openMenu('thu')">Thursday</button>
-  <button class="tab-btn" onclick="openMenu('fri')">Friday</button>
-  <button class="tab-btn" onclick="openMenu('sat')">Saturday</button>
-  <button class="tab-btn" onclick="openMenu('sun')">Sunday</button>
-</div>
+  <div class="tab-buttons">
+    <button class="tab-btn active" onclick="openMenu('mon')">Mon</button>
+    <button class="tab-btn" onclick="openMenu('tue')">Tue</button>
+    <button class="tab-btn" onclick="openMenu('wed')">Wed</button>
+    <button class="tab-btn" onclick="openMenu('thu')">Thu</button>
+    <button class="tab-btn" onclick="openMenu('fri')">Fri</button>
+    <button class="tab-btn" onclick="openMenu('sat')">Sat</button>
+    <button class="tab-btn" onclick="openMenu('sun')">Sun</button>
+  </div>
 
-<!-- MENU CONTENT -->
-<div id="mon" class="menu-box">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Veg Upma & Chutney | Tea/Coffee</div>
+  <!-- MESS CONTENT -->
+  <div id="mon" class="menu-box">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Veg Upma & Chutney | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Dudhi Sabji, Chora, Tomato Rasam, Dal, Rice, Papad, Pickle</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Dum Aloo, Rice, Roti</div>
+  </div>
 
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Dudhi Sabji, Chora, Tomato Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Tomato Pickle</div>
+  <div id="tue" class="menu-box" style="display:none;">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Idly & Peanut Chutney | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Tindora Fry, Palak Dal, Rice, Buttermilk</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Beetroot Chana Dal Fry, Rice, Sambhar</div>
+  </div>
 
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Dum Aloo, Roti, Rice, **</div>
-</div>
+  <div id="wed" class="menu-box" style="display:none;">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Imli Rice | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Jeera Aloo, Tomato Dal, Rice, Salad</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Brinjal Curry, Rice</div>
+  </div>
 
-<div id="tue" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Idly & Peanut Chutney | Tea/Coffee</div>
+  <div id="thu" class="menu-box" style="display:none;">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Onion Pakoda | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Cabbage Matar, Dal, Rice, Pickle</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Veg Biryani + Raita</div>
+  </div>
 
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Tindora Fry, Matar, Miriyalu Rasam, Roti, Palak Dal, Plain Rice, Buttermilk, Papad, Salad</div>
+  <div id="fri" class="menu-box" style="display:none;">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Veg Pasta | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Dahi Onion Sabji, Drumstick Dal, Rice</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Tomato Curry, Roti</div>
+  </div>
 
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Beetroot Chana Dal Fry, Roti, Rice, Sambhar, Onion</div>
-</div>
+  <div id="sat" class="menu-box" style="display:none;">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Semia Upma | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Aloo Palak, Dal, Rice</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Dry Cauliflower</div>
+  </div>
 
-<div id="wed" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Imli Rice | Tea/Coffee</div>
+  <div id="sun" class="menu-box" style="display:none;">
+    <div class="menu-title">Breakfast</div><div class="menu-item">Bread Jam | Tea/Coffee</div>
+    <div class="menu-title">Lunch</div><div class="menu-item">Chole, Puri, Kadhi, Jeera Rice, Sweet</div>
+    <div class="menu-title">Dinner</div><div class="menu-item">Sambar Rice</div>
+  </div>
 
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Jeera Aloo, Math, Pachi Pulusu, Roti, Tomato Dal, Plain Rice, Buttermilk, Papad, Salad, Karam Podi</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Brinjal Curry, Roti, Rice, Onion Tomato Chutney</div>
-</div>
-
-<div id="thu" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Onion Pakoda | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Cabbage Matar, Chana Dal, Tomato Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Karela Pickle</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Tomato Kurma, Roti, Veg Biryani, Chaas Boondi Raita, Chutney</div>
-</div>
-
-<div id="fri" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Veg Pasta | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Dahi Onion Sabji, Desi Chana, Tomato Rasam, Roti, Drumstick Dal, Plain Rice, Buttermilk, Papad, Salad</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Drumstick Tomato Curry, Roti, Rice, **</div>
-</div>
-
-<div id="sat" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Semia Upma & Chutney | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Aloo Palak, Tuver, Miriyala Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Karam Podi</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Dry Cauliflower, Roti, Rice, **</div>
-</div>
-
-<div id="sun" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Bread Jam | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Chole, **, Puri, Kadhi, Jeera Rice, Sweet, Frymes, Salad</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Sambar Rice, Pickle, **</div>
-</div>
-
-<script>
+  <script>
 function openMenu(id){
-  document.querySelectorAll(".menu-box").forEach(box => box.style.display="none");
+  document.querySelectorAll(".menu-box").forEach(b=>b.style.display="none");
   document.getElementById(id).style.display="block";
 
   document.querySelectorAll(".tab-btn").forEach(btn=>btn.classList.remove("active"));
@@ -528,8 +430,6 @@ function openMenu(id){
 
 
 </section>
-
-
 
 <!-- ================= RESULTS PAGE ================ -->
 <section id="results" class="page" style="display:none">
@@ -621,7 +521,7 @@ function openMenu(id){
   </div>
 
   <div class="alert-fail">
-    ❗ PROMOTED TO 3rd SEM (...0 BACKLOGS...)
+    ❗ PROMOTED TO 3RD SEM (O BACKLOGS)
   </div>
 
   <div class="info-box">
@@ -636,7 +536,6 @@ function openMenu(id){
 </div>
 
 </section>
-
 
 <!-- ================= FEES PAGE ================ -->
 <section id="fees" class="page" style="display:none">
@@ -764,17 +663,16 @@ function openMenu(id){
 
 </section>
 
+ <script>
+function openPage(pageId, back = false){
+  document.querySelectorAll(".page").forEach(p => p.style.display = "none");
 
+  const page = document.getElementById(pageId);
+  page.style.display = "block";
+  page.style.animation = back ? "fadeSlideBack 0.40s ease" : "fadeSlide 0.40s ease";
 
-<script>
-function openPage(pageId){
-  const pages = ['home','attendance','student','hostel','results','fees'];
-  pages.forEach(p=>{
-    document.getElementById(p).style.display = (p === pageId) ? "block" : "none";
-  });
   window.scrollTo(0,0);
 }
 </script>
-
-</body>
-</html>
+ 
+  
