@@ -408,6 +408,125 @@ $subjects = [
     </div>
   </div>
 
+  <!-- ================= MESS MENU WITH TABS ================= -->
+<h4 class="section-title" style="margin-top:28px;font-weight:700;">Mess Menu (01 Dec - 08 Dec 2025)</h4>
+
+<style>
+.tab-buttons {display:flex;overflow-x:auto;gap:10px;margin-top:14px;}
+.tab-buttons button{
+  padding:10px 16px;border:none;border-radius:10px;
+  font-weight:600;cursor:pointer;white-space:nowrap;
+  background:#e5e7eb;
+}
+.tab-buttons button.active{background:#000;color:#fff;}
+
+.menu-box{
+  background:#fff;margin-top:16px;padding:16px;border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+.menu-title{font-weight:700;font-size:18px;margin-bottom:10px;color:#333;}
+.menu-item{margin-bottom:8px;font-size:15px;font-weight:500;color:#444;}
+</style>
+
+<div class="tab-buttons">
+  <button class="tab-btn active" onclick="openMenu('mon')">Monday</button>
+  <button class="tab-btn" onclick="openMenu('tue')">Tuesday</button>
+  <button class="tab-btn" onclick="openMenu('wed')">Wednesday</button>
+  <button class="tab-btn" onclick="openMenu('thu')">Thursday</button>
+  <button class="tab-btn" onclick="openMenu('fri')">Friday</button>
+  <button class="tab-btn" onclick="openMenu('sat')">Saturday</button>
+  <button class="tab-btn" onclick="openMenu('sun')">Sunday</button>
+</div>
+
+<!-- MENU CONTENT -->
+<div id="mon" class="menu-box">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Veg Upma & Chutney | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Dudhi Sabji, Chora, Tomato Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Tomato Pickle</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Dum Aloo, Roti, Rice, **</div>
+</div>
+
+<div id="tue" class="menu-box" style="display:none;">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Idly & Peanut Chutney | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Tindora Fry, Matar, Miriyalu Rasam, Roti, Palak Dal, Plain Rice, Buttermilk, Papad, Salad</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Beetroot Chana Dal Fry, Roti, Rice, Sambhar, Onion</div>
+</div>
+
+<div id="wed" class="menu-box" style="display:none;">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Imli Rice | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Jeera Aloo, Math, Pachi Pulusu, Roti, Tomato Dal, Plain Rice, Buttermilk, Papad, Salad, Karam Podi</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Brinjal Curry, Roti, Rice, Onion Tomato Chutney</div>
+</div>
+
+<div id="thu" class="menu-box" style="display:none;">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Onion Pakoda | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Cabbage Matar, Chana Dal, Tomato Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Karela Pickle</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Tomato Kurma, Roti, Veg Biryani, Chaas Boondi Raita, Chutney</div>
+</div>
+
+<div id="fri" class="menu-box" style="display:none;">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Veg Pasta | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Dahi Onion Sabji, Desi Chana, Tomato Rasam, Roti, Drumstick Dal, Plain Rice, Buttermilk, Papad, Salad</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Drumstick Tomato Curry, Roti, Rice, **</div>
+</div>
+
+<div id="sat" class="menu-box" style="display:none;">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Semia Upma & Chutney | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Aloo Palak, Tuver, Miriyala Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Karam Podi</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Dry Cauliflower, Roti, Rice, **</div>
+</div>
+
+<div id="sun" class="menu-box" style="display:none;">
+  <div class="menu-title">Breakfast</div>
+  <div class="menu-item">Bread Jam | Tea/Coffee</div>
+
+  <div class="menu-title">Lunch</div>
+  <div class="menu-item">Chole, **, Puri, Kadhi, Jeera Rice, Sweet, Frymes, Salad</div>
+
+  <div class="menu-title">Dinner</div>
+  <div class="menu-item">Sambar Rice, Pickle, **</div>
+</div>
+
+<script>
+function openMenu(id){
+  document.querySelectorAll(".menu-box").forEach(box => box.style.display="none");
+  document.getElementById(id).style.display="block";
+
+  document.querySelectorAll(".tab-btn").forEach(btn=>btn.classList.remove("active"));
+  event.target.classList.add("active");
+}
+</script>
+
+
 </section>
 
 
@@ -642,125 +761,6 @@ $subjects = [
     </tbody>
   </table>
 </div>
-
-  <!-- ================= MESS MENU WITH TABS ================= -->
-<h4 class="section-title" style="margin-top:28px;font-weight:700;">Mess Menu (01 Dec - 08 Dec 2025)</h4>
-
-<style>
-.tab-buttons {display:flex;overflow-x:auto;gap:10px;margin-top:14px;}
-.tab-buttons button{
-  padding:10px 16px;border:none;border-radius:10px;
-  font-weight:600;cursor:pointer;white-space:nowrap;
-  background:#e5e7eb;
-}
-.tab-buttons button.active{background:#000;color:#fff;}
-
-.menu-box{
-  background:#fff;margin-top:16px;padding:16px;border-radius:14px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.08);
-}
-.menu-title{font-weight:700;font-size:18px;margin-bottom:10px;color:#333;}
-.menu-item{margin-bottom:8px;font-size:15px;font-weight:500;color:#444;}
-</style>
-
-<div class="tab-buttons">
-  <button class="tab-btn active" onclick="openMenu('mon')">Monday</button>
-  <button class="tab-btn" onclick="openMenu('tue')">Tuesday</button>
-  <button class="tab-btn" onclick="openMenu('wed')">Wednesday</button>
-  <button class="tab-btn" onclick="openMenu('thu')">Thursday</button>
-  <button class="tab-btn" onclick="openMenu('fri')">Friday</button>
-  <button class="tab-btn" onclick="openMenu('sat')">Saturday</button>
-  <button class="tab-btn" onclick="openMenu('sun')">Sunday</button>
-</div>
-
-<!-- MENU CONTENT -->
-<div id="mon" class="menu-box">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Veg Upma & Chutney | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Dudhi Sabji, Chora, Tomato Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Tomato Pickle</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Dum Aloo, Roti, Rice, **</div>
-</div>
-
-<div id="tue" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Idly & Peanut Chutney | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Tindora Fry, Matar, Miriyalu Rasam, Roti, Palak Dal, Plain Rice, Buttermilk, Papad, Salad</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Beetroot Chana Dal Fry, Roti, Rice, Sambhar, Onion</div>
-</div>
-
-<div id="wed" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Imli Rice | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Jeera Aloo, Math, Pachi Pulusu, Roti, Tomato Dal, Plain Rice, Buttermilk, Papad, Salad, Karam Podi</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Brinjal Curry, Roti, Rice, Onion Tomato Chutney</div>
-</div>
-
-<div id="thu" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Onion Pakoda | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Cabbage Matar, Chana Dal, Tomato Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Karela Pickle</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Tomato Kurma, Roti, Veg Biryani, Chaas Boondi Raita, Chutney</div>
-</div>
-
-<div id="fri" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Veg Pasta | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Dahi Onion Sabji, Desi Chana, Tomato Rasam, Roti, Drumstick Dal, Plain Rice, Buttermilk, Papad, Salad</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Drumstick Tomato Curry, Roti, Rice, **</div>
-</div>
-
-<div id="sat" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Semia Upma & Chutney | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Aloo Palak, Tuver, Miriyala Rasam, Roti, Dal, Plain Rice, Buttermilk, Papad, Salad, Karam Podi</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Dry Cauliflower, Roti, Rice, **</div>
-</div>
-
-<div id="sun" class="menu-box" style="display:none;">
-  <div class="menu-title">Breakfast</div>
-  <div class="menu-item">Bread Jam | Tea/Coffee</div>
-
-  <div class="menu-title">Lunch</div>
-  <div class="menu-item">Chole, **, Puri, Kadhi, Jeera Rice, Sweet, Frymes, Salad</div>
-
-  <div class="menu-title">Dinner</div>
-  <div class="menu-item">Sambar Rice, Pickle, **</div>
-</div>
-
-<script>
-function openMenu(id){
-  document.querySelectorAll(".menu-box").forEach(box => box.style.display="none");
-  document.getElementById(id).style.display="block";
-
-  document.querySelectorAll(".tab-btn").forEach(btn=>btn.classList.remove("active"));
-  event.target.classList.add("active");
-}
-</script>
-
 
 </section>
 
