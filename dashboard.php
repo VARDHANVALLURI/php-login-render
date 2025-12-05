@@ -21,6 +21,23 @@ if (!isset($_SESSION['student'])) {
 
 <style>
 
+  html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+.page {
+  width: 100vw;
+  max-width: 100vw;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width:100%;
+}
+
+
   @keyframes fadeSlide {
   from { opacity:0; transform:translateX(100%); }
   to   { opacity:1; transform:translateX(0); }
