@@ -103,11 +103,11 @@ body {
   </div>
 
   <div class="grid-menu">
+    <div class="menu-btn" onclick="openPage('student')"><i class="fa-solid fa-address-card"></i>Student Info</div>
+    <div class="menu-btn" onclick="openPage('hostel')"><i class="fa-solid fa-building-columns"></i>Hostel</div>
     <div class="menu-btn" onclick="openPage('attendance')"><i class="fa-solid fa-calendar-check"></i>Attendance</div>
     <div class="menu-btn" onclick="openPage('results')"><i class="fa-solid fa-chart-line"></i>Results</div>
     <div class="menu-btn" onclick="openPage('fees')"><i class="fa-solid fa-receipt"></i>Fees</div>
-    <div class="menu-btn" onclick="openPage('student')"><i class="fa-solid fa-address-card"></i>Student Info</div>
-    <div class="menu-btn" onclick="openPage('hostel')"><i class="fa-solid fa-building-columns"></i>Hostel</div>
   </div>
  
 </section>
@@ -423,7 +423,7 @@ function openMenu(id){
 </section>
 
 <!-- ================= RESULTS PAGE ================ -->
-<section id="results" class="page" style="display:none">
+<section id="results" class="page">
 
   <button class="back-btn" onclick="openPage('home')">
     <i class="bi bi-arrow-left"></i> Back
@@ -529,7 +529,7 @@ function openMenu(id){
 </section>
 
 <!-- ================= FEES PAGE ================ -->
-<section id="fees" class="page" style="display:none">
+<section id="fees" class="page">
 
   <button class="back-btn" onclick="openPage('home')">
     <i class="bi bi-arrow-left"></i> Back
@@ -654,16 +654,19 @@ function openMenu(id){
 
 </section>
 
- <script>
+<script>
 function openPage(pageId, back = false){
-  document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.remove("active");
+  });
 
-  const page = document.getElementById(pageId);
-  page.style.display = "block";
-  page.style.animation = back ? "fadeSlideBack 0.40s ease" : "fadeSlide 0.40s ease";
+  const pg = document.getElementById(pageId);
+  pg.classList.add("active");
+
+  pg.style.animation = back ? "fadeSlideBack .35s ease" : "fadeSlide .35s ease";
 
   window.scrollTo(0,0);
 }
 </script>
- 
+
   
