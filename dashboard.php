@@ -137,16 +137,16 @@ body {
 // You can add/remove dates and slots anytime.
 
 $attendance = [
-"2025-12-05"=>["-","P","P","P","P"],
-"2025-12-04"=>["P","P","P","P","P"],
-"2025-12-02"=>["P","P","P","P","P"],
-"2025-12-01"=>["P","P","P","P","-"],
-"2025-11-28"=>["P","P","P","A","-"],      
-"2025-11-27"=>["P","P","P","P","P"],     
-"2025-11-25"=>["P","P","P","P","P"],     
-"2025-11-24"=>["P","P" "P","-"],         
-    
+    "2025-12-05"=>["P","P","P","P","-"],
+    "2025-12-04"=>["P","P","P","P","P"],
+    "2025-12-02"=>["P","P","P","P","P"],
+    "2025-12-01"=>["P","P","P","P","-"],
+    "2025-11-28"=>["P","P","P","A","-"],
+    "2025-11-27"=>["P","P","P","P","P"],
+    "2025-11-25"=>["P","P","P","P","P"],
+    "2025-11-24"=>["P","P","P","-","-"],
 ];
+
     
 // Calculate totals
 $totalPresent = 0;
@@ -317,89 +317,284 @@ $subjects = [
 </section>   <!-- CLOSE ATTENDANCE SECTION -->
 
 
-
-<!-- ================= STUDENT INFO PAGE ================ -->
+<!-- ================= STUDENT INFO ================ -->
+ 
 <section id="student" class="page" style="display:none">
   <button class="back-btn" onclick="openPage('home')">
     <i class="bi bi-arrow-left"></i> Back
   </button>
-  <h3>Student Information</h3>
 
-  <div class="card-box">
+  <style>
+    .stu-card {
+      background:#fff;
+      padding:18px;
+      border-radius:14px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.08);
+      margin-bottom:18px;
+      text-align:center;
+    }
+    .stu-img {
+      width:160px;
+      height:160px;
+      object-fit:cover;
+      border-radius:50%;
+      border:4px solid #e5e7eb;
+      margin-bottom:14px;
+    }
+    .stu-name {
+      font-size:22px;
+      font-weight:700;
+      color:#2b4f77;
+      margin-bottom:6px;
+    }
+    .stu-badge {
+      background:#2eccb6;
+      color:#fff;
+      padding:5px 14px;
+      border-radius:20px;
+      font-size:14px;
+      font-weight:600;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+    .stu-line {
+      width:100%;
+      height:1px;
+      background:#ddd;
+      margin:14px 0;
+    }
+    .info-row {
+      font-size:15px;
+      text-align:left;
+      margin:8px 0;
+      display:flex;
+      justify-content:space-between;
+      color:#4a5568;
+    }
+    .info-label { font-weight:600; color:#2d3748; }
+  </style>
 
-    <!-- Profile photo -->
-    <div class="profile-pic text-center mb-3">
-      <img 
-        src="your_profile_medium.jpg"
-        alt="Student Photo"
-        style="width:160px;height:160px;object-fit:cover;border-radius:14px;border:3px solid #d0d0d0;">
-      <h5 class="fw-bold mt-3 mb-1">VALLURI SRI KRISHNA VARDAN</h5>
-      <div class="text-muted">Roll No: 2403031260215 | CSE (4CYBER3)</div>
+  <div class="stu-card">
+
+    <!-- PROFILE PHOTO -->
+    <img src="your_profile_medium.jpg" class="stu-img">
+
+    <!-- NAME -->
+    <div class="stu-name">VALLURI SRI KRISHNA VARDAN</div>
+
+    <!-- ACTIVE BADGE -->
+    <div class="stu-badge">Active</div>
+
+    <!-- COURSE INFO -->
+    <div style="font-size:16px; font-weight:600; color:#555;">
+      PIET-1 - BTech - Cyber Security (Semester - 3)
     </div>
 
-    <!-- Information grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">DOB</div>
-        <div style="font-weight:600;margin-top:6px;">28-11-2006</div>
-      </div>
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">Student Phone</div>
-        <div style="font-weight:600;margin-top:6px;">6281048554</div>
-      </div>
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">College Email</div>
-        <div style="word-break:break-all;font-weight:600;margin-top:6px;">
-          2403031260215@paruluniversity.ac.in
-        </div>
-      </div>
-
-      <div class="card-box" style="padding:12px;">
-        <div class="text-muted">Personal Email</div>
-        <div style="word-break:break-all;font-weight:600;margin-top:6px;">
-          krishnavardhan124@gmail.com
-        </div>
-      </div>
-
+    <!-- ENROLLMENT & ABC NUMBER -->
+    <div style="margin-top:12px; font-size:16px; font-weight:600; color:#2d3748;">
+      Enrollment Number:<br>
+      <span style="font-size:18px; font-weight:700;">2403031260215</span>
+      <br><br>
+      Academic Bank Credit (ABC) Number:<br>
+      <span style="font-size:18px; font-weight:700;">163032646172</span>
     </div>
 
-    <!-- Parents -->
-    <div style="margin-top:18px;">
-      <div class="section-title">Parents / Guardian</div>
-      <p><strong>Father:</strong> VALLURI VENKATA KRISHNANANDA CHOWDARY | 9951996671</p>
-      <p><strong>Mother:</strong> VALLURI VISALAKSHI | 6301244329</p>
+    <!-- BRANCH - SECTION -->
+    <div style="margin-top:18px; font-size:16px; font-weight:600; color:#445;">
+      PIET-BTech-CSE-4CYBER3 | 2 | 48
+    </div>
+
+    <div class="stu-line"></div>
+
+    <!-- DETAILS -->
+    <div class="info-row">
+      <span class="info-label">DOB :</span>
+      <span>28-11-2006</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Student :</span>
+      <span>6281048554</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Father :</span>
+      <span>VALLURI VENKATA KRISHNANANDA CHOWDARY | 9951996671</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">Mother :</span>
+      <span>VALLURI VISALAKSHI | 6301244329</span>
+    </div>
+
+    <div class="info-row" style="flex-direction:column; align-items:flex-start;">
+      <span class="info-label">Email :</span>
+      <span>2403031260215@paruluniversity.ac.in</span>
+      <span>krishnavardhan124@gmail.com</span>
     </div>
 
   </div>
 </section>
 
 
+   
+
+
+
+
 <!-- ================= HOSTEL PAGE ================ -->
 <section id="hostel" class="page" style="display:none">
+
   <button class="back-btn" onclick="openPage('home')">
     <i class="bi bi-arrow-left"></i> Back
   </button>
-  <h3>Hostel</h3>
 
-  <div class="card" style="margin-top:10px;">
-    <h4 class="section-title">Hostel Details</h4>
-    <p><strong>Reg No:</strong> 42043</p>
-    <p><strong>Block:</strong> TAGORE BHAWAN - C (Non AC)</p>
-    <p><strong>Room:</strong> Floor 3 | Room C-361 | Bed 3</p>
-    <p><strong>Duration:</strong> 01-07-2025 → 30-06-2026</p>
-    <p><strong>City:</strong> EAST GODAVARI</p>
-    <p><strong>Address:</strong> HOUSE NO-1-18 MAIN ROAD, NELAPARTHIPADU, DRAKSHARAMAM</p>
+  <style>
+    .hostel-tabs { 
+      display:flex; 
+      gap:10px; 
+      margin-top:10px; 
+      overflow-x:auto; 
+      padding-bottom:6px;
+    }
+    .hostel-tabs::-webkit-scrollbar { display:none; }
+
+    .hostel-tab-btn {
+      padding:10px 18px;
+      border:none;
+      border-radius:12px;
+      background:#e5e7eb;
+      font-weight:600;
+      white-space:nowrap;
+      cursor:pointer;
+      transition:0.25s;
+    }
+    .hostel-tab-btn.active {
+      background:#2563eb;
+      color:white;
+      box-shadow:0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    .hostel-box {
+      background:#fff;
+      padding:18px;
+      border-radius:14px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.1);
+      margin-top:16px;
+      animation:fadeIn .3s ease;
+    }
+
+    .hostel-img {
+      width:170px; height:170px;
+      object-fit:cover;
+      border-radius:50%;
+      border:4px solid #e2e8f0;
+      display:block;
+      margin:auto;
+    }
+
+    .hostel-name {
+      font-size:20px;
+      text-align:center;
+      font-weight:700;
+      color:#2b4f77;
+      margin-top:12px;
+    }
+    .hostel-active {
+      background:#2eccb6;
+      color:white;
+      padding:5px 14px;
+      border-radius:20px;
+      font-weight:600;
+      display:inline-block;
+      margin:10px 0;
+    }
+    .info-row {
+      font-size:15px; margin:6px 0;
+      display:flex; justify-content:space-between;
+      color:#445;
+    }
+    .info-label { font-weight:700; }
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(6px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+  </style>
+
+  <!-- SWITCH TABS -->
+  <div class="hostel-tabs">
+    <button class="hostel-tab-btn active" onclick="openHostelTab('info', this)">Hostel Info</button>
+    <button class="hostel-tab-btn" onclick="openHostelTab('passes', this)">Gate Passes</button>
+    <button class="hostel-tab-btn" onclick="openHostelTab('mess', this)">Mess Menu</button>
   </div>
 
-  <div class="card" style="margin-top:14px;">
-    <h4 class="section-title">Recent Gate Passes</h4>
+
+  <!-- ===================== HOSTEL INFO (DEFAULT) ===================== -->
+  <div id="info" class="hostel-box">
+
+    <img src="your_profile_medium.jpg" class="hostel-img">
+
+    <div class="hostel-name">42043 - 2403031260215 - VALLURI SRI KRISHNA VARDAN</div>
+
+    <div style="text-align:center;">
+      Student | <span class="hostel-active">Active</span>
+    </div>
+
+    <div class="info-row"><span class="info-label">Registration No. :</span> <span>42043</span></div>
+
+    <div class="info-row"><span class="info-label">Hostel :</span> <span>TAGORE BHAWAN - C</span></div>
+
+    <div class="info-row"><span class="info-label">Room Type :</span> <span>Non AC</span></div>
+
+    <div class="info-row"><span class="info-label">Room Details :</span> 
+      <span>Floor: 3 | Room: C-361 | Bed: 3</span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label"><i class="bi bi-calendar2"></i> Duration :</span>
+      <span>01-07-2025 to 30-06-2026</span>
+    </div>
+
+    <br>
+
+    <div class="info-row"><span class="info-label">Student Phone :</span> <span>6281048554</span></div>
+
+    <div class="info-row"><span class="info-label">Student Email :</span>
+      <span style="text-align:right;">
+        2403031260215@paruluniversity.ac.in
+      </span>
+    </div>
+
+    <div class="info-row"><span class="info-label">Guardian Phone :</span>
+      <span>9951996671 , 6301244329</span>
+    </div>
+
+    <div class="info-row"><span class="info-label">Guardian Email :</span> <span>-</span></div>
+
+    <div class="info-row"><span class="info-label">City :</span> <span>EAST GODAVARI</span></div>
+
+    <div class="info-row" style="flex-direction:column;align-items:flex-start;">
+      <span class="info-label">Address :</span>
+      <span>HOUSE NO-1-18 MAIN ROAD, NELAPARTHIPADU, DRAKSHARAMAM RAMCHANDRAPURAM DR B R AMBEDKAR NEAR PANCHAYAT</span>
+    </div>
+
+    <div class="info-row" style="flex-direction:column;align-items:flex-start;">
+      <span class="info-label">Rector Name :</span>
+      <span>Mr. CHANDAN SINGH, Mr. JAY PAL SINGH BHADOURIYA, Mr. KALISETTI NEELAYYA, Mr. LALIT KUMAR, Mr. RAJ VAKSH SINGH</span>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- ===================== HOSTEL PASSES ===================== -->
+  <div id="passes" class="hostel-box" style="display:none;">
+    <h4 class="fw-bold mb-2">Recent Gate Passes</h4>
 
     <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
+      <table class="table table-bordered text-center">
+        <thead class="table-light">
           <tr>
             <th>Sr</th>
             <th>Reason</th>
@@ -409,7 +604,6 @@ $subjects = [
             <th>Status</th>
           </tr>
         </thead>
-
         <tbody>
           <tr>
             <td>1</td>
@@ -419,7 +613,6 @@ $subjects = [
             <td>02-11-2025</td>
             <td><span class="badge bg-success">Approved</span></td>
           </tr>
-
           <tr>
             <td>2</td>
             <td>Personal</td>
@@ -432,64 +625,213 @@ $subjects = [
       </table>
     </div>
 
-    <div style="padding:10px 0; text-align:center; font-size:13px; color:#555;">
-      <b>NOTE:</b> ONLY RECENT GATE PASSES WILL BE SHOWN.
-    </div>
-  </div>
-   <!-- Mess Menu -->
-  <h4 class="fw-bold mt-4">Mess Menu</h4>
-
-  <div class="tab-buttons">
-    <button class="tab-btn active" onclick="openMenu('mon')">Mon</button>
-    <button class="tab-btn" onclick="openMenu('tue')">Tue</button>
-    <button class="tab-btn" onclick="openMenu('wed')">Wed</button>
-    <button class="tab-btn" onclick="openMenu('thu')">Thu</button>
-    <button class="tab-btn" onclick="openMenu('fri')">Fri</button>
-    <button class="tab-btn" onclick="openMenu('sat')">Sat</button>
-    <button class="tab-btn" onclick="openMenu('sun')">Sun</button>
+    <p class="text-center mt-2" style="font-size:13px;color:#777;">
+      <b>NOTE:</b> Only recent gate passes will be shown.
+    </p>
   </div>
 
-  <div id="mon" class="menu-box">
-    <div><b>Breakfast:</b> Veg Upma & Chutney | Tea/Coffee</div>
-    <div><b>Lunch:</b> Dudhi Sabji, Dal, Rice, Papad</div>
-    <div><b>Dinner:</b> Dum Aloo, Rice, Roti</div>
-  </div>
 
-  <div id="tue" class="menu-box" style="display:none;">
-    <div><b>Breakfast:</b> Idly & Peanut Chutney | Tea/Coffee</div>
-    <div><b>Lunch:</b> Palak Dal, Rice</div>
-    <div><b>Dinner:</b> Beetroot Dal Curry, Rice</div>
-  </div>
 
-  <div id="wed" class="menu-box" style="display:none;">
-    <div><b>Breakfast:</b> Imli Rice | Tea/Coffee</div>
-    <div><b>Lunch:</b> Jeera Aloo, Tomato Dal</div>
-    <div><b>Dinner:</b> Brinjal Curry, Rice</div>
-  </div>
 
-  <div id="thu" class="menu-box" style="display:none;">
-    <div><b>Breakfast:</b> Onion Pakoda | Tea/Coffee</div>
-    <div><b>Lunch:</b> Cabbage Matar, Dal</div>
-    <div><b>Dinner:</b> Veg Biryani + Raita</div>
-  </div>
+  <!-- ===================== MESS MENU (Premium UI Fixed) ===================== -->
+<div id="messmenu" style="display:none;">
 
-  <div id="fri" class="menu-box" style="display:none;">
-    <div><b>Breakfast:</b> Veg Pasta | Tea/Coffee</div>
-    <div><b>Lunch:</b> Drumstick Dal</div>
-    <div><b>Dinner:</b> Tomato Curry, Roti</div>
-  </div>
+    
+<style>
+/* ======= Premium Mess Menu UI ======= */
+.mess-nav {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-top: 10px;
+  scrollbar-width: none;
+}
+.mess-nav::-webkit-scrollbar { display: none; }
 
-  <div id="sat" class="menu-box" style="display:none;">
-    <div><b>Breakfast:</b> Semia Upma | Tea/Coffee</div>
-    <div><b>Lunch:</b> Aloo Palak, Dal</div>
-    <div><b>Dinner:</b> Dry Cauliflower</div>
-  </div>
+.mess-nav-btn {
+  padding: 10px 18px;
+  border-radius: 14px;
+  border: none;
+  background: #f3f4f6;
+  font-weight: 600;
+  color: #475569;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.mess-nav-btn.active {
+  background: #4f46e5;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(79,70,229,0.35);
+}
 
-  <div id="sun" class="menu-box" style="display:none;">
-    <div><b>Breakfast:</b> Bread Jam</div>
-    <div><b>Lunch:</b> Chole, Puri, Jeera Rice, Sweet</div>
-    <div><b>Dinner:</b> Sambar Rice</div>
-  </div>
+.meal-card {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+  margin-top: 15px;
+  animation: fadeSlide 0.35s ease;
+}
+
+.meal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.meal-item {
+  font-size: 15px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+  margin-bottom: 8px;
+  color: #334155;
+  border-left: 4px solid #4f46e5;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
+<h4 class="fw-bold mt-4">🍽️  Mess Menu</h4>
+
+<!-- Navigation Tabs -->
+<div class="mess-nav">
+  <button class="mess-nav-btn active" onclick="openPremiumMess('mess-mon', this)">Mon</button>
+  <button class="mess-nav-btn" onclick="openPremiumMess('mess-tue', this)">Tue</button>
+  <button class="mess-nav-btn" onclick="openPremiumMess('mess-wed', this)">Wed</button>
+  <button class="mess-nav-btn" onclick="openPremiumMess('mess-thu', this)">Thu</button>
+  <button class="mess-nav-btn" onclick="openPremiumMess('mess-fri', this)">Fri</button>
+  <button class="mess-nav-btn" onclick="openPremiumMess('mess-sat', this)">Sat</button>
+  <button class="mess-nav-btn" onclick="openPremiumMess('mess-sun', this)">Sun</button>
+</div>
+
+
+<!-- ================= DAY MENUS ================= -->
+
+<div id="mess-mon" class="meal-card">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Veg Upma, Chutney, Tea/Coffee</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Dudhi Sabji, Dal, Rice, Papad</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Dum Aloo, Rice, Roti</div>
+</div>
+
+<div id="mess-tue" class="meal-card" style="display:none;">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Idly, Peanut Chutney, Tea/Coffee</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Palak Dal, Rice</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Beetroot Dal Curry, Rice</div>
+</div>
+
+<div id="mess-wed" class="meal-card" style="display:none;">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Imli Rice, Tea/Coffee</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Jeera Aloo, Tomato Dal</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Brinjal Curry, Rice</div>
+</div>
+
+<div id="mess-thu" class="meal-card" style="display:none;">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Onion Pakoda, Tea/Coffee</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Cabbage Matar, Dal</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Veg Biryani + Raita</div>
+</div>
+
+<div id="mess-fri" class="meal-card" style="display:none;">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Veg Pasta, Tea/Coffee</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Drumstick Dal</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Tomato Curry, Roti</div>
+</div>
+
+<div id="mess-sat" class="meal-card" style="display:none;">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Semia Upma, Tea/Coffee</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Aloo Palak, Dal</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Dry Cauliflower</div>
+</div>
+
+<div id="mess-sun" class="meal-card" style="display:none;">
+  <div class="meal-header">🥞 Breakfast</div>
+  <div class="meal-item">Bread Jam</div>
+
+  <div class="meal-header">🍛 Lunch</div>
+  <div class="meal-item">Chole, Puri, Jeera Rice, Sweet</div>
+
+  <div class="meal-header">🍽️ Dinner</div>
+  <div class="meal-item">Sambar Rice</div>
+</div>
+
+
+<script>
+function openPremiumMess(day, btn) {
+  document.querySelectorAll(".meal-card").forEach(c => c.style.display = "none");
+  document.getElementById(day).style.display = "block";
+
+  document.querySelectorAll(".mess-nav-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+</script>
+
+<script>
+function openHostelTab(tab, btn) {
+  // Hide all hostel tab content
+  document.getElementById("info").style.display = "none";
+  document.getElementById("passes").style.display = "none";
+  document.getElementById("messmenu").style.display = "none";
+
+  // Show selected tab
+  if(tab === "mess") tab = "messmenu";
+  document.getElementById(tab).style.display = "block";
+
+  // Update active button
+  document.querySelectorAll(".hostel-tab-btn")
+    .forEach(b => b.classList.remove("active"));
+    
+  btn.classList.add("active");
+
+  // Smooth scroll
+  document.getElementById("hostel").scrollIntoView({behavior: "smooth"});
+}
+</script>
+
+
+</div>
 
 </section>
 
@@ -608,39 +950,162 @@ $subjects = [
   <button class="back-btn" onclick="openPage('home')">
     <i class="bi bi-arrow-left"></i> Back
   </button>
-  <h3>Fee Status</h3>
 
-  <div class="card p-3 mt-2">
-    <h5 class="fw-bold">Fee Details</h5>
+  <h3 class="fw-bold mb-3">Fee Status</h3>
 
-    <div class="table-responsive mt-2">
-      <table class="table table-bordered text-center">
-        <thead style="background:#f8fafc;font-weight:700;">
-          <tr><th>Sr</th><th>Semester</th><th>Fees</th><th>Paid</th><th>Balance</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>1</td><td>1,75,000</td><td>1,75,000</td><td>0</td></tr>
-          <tr><td>2</td><td>2</td><td>1,75,000</td><td>1,75,000</td><td>0</td></tr>
-          <tr style="font-weight:700;background:#f0f0f0;"><td colspan="2">Total</td><td>3,50,000</td><td>3,50,000</td><td>0</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <style>
+    .fee-card {
+      background:#fff;
+      padding:14px;
+      border-radius:14px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.08);
+      margin-bottom:14px;
+    }
+    .fee-amount {
+      font-size:26px;
+      font-weight:700;
+    }
+    .fee-label {
+      font-size:14px;
+      color:#666;
+      margin-top:6px;
+    }
+    .bar-line {
+      width:100%;
+      height:5px;
+      border-radius:6px;
+      margin-top:10px;
+    }
+    .bar-green { background:#20c997; }
+    .bar-blue  { background:#0d6efd; }
+    .bar-gold  { background:#d4a017; }
+    .bar-red   { background:#dc3545; }
 
-    <h5 class="fw-bold mt-4">Hostel Fee</h5>
-    <div class="table-responsive mt-2">
-      <table class="table table-bordered text-center">
-        <thead style="background:#f8fafc;font-weight:700;">
-          <tr><th>Hostel</th><th>Year</th><th>Amount</th><th>Paid</th><th>Balance</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>TAGORE BHAWAN - A</td><td>2024-25</td><td>1,19,500</td><td>1,19,500</td><td>0</td></tr>
-          <tr><td>TAGORE BHAWAN - C</td><td>2025-26</td><td>1,24,000</td><td>1,24,000</td><td>0</td></tr>
-        </tbody>
-      </table>
-    </div>
+    .tbl-box {
+      background:#fff;
+      padding:14px;
+      border-radius:14px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.08);
+      margin-top:20px;
+    }
 
+    table td, table th {
+      font-size:14px !important;
+      vertical-align:middle !important;
+    }
+  </style>
+
+  <!-- ================= TOP 4 CARDS ================= -->
+  <div class="fee-card">
+    <div class="fee-amount text-success">5,95,500</div>
+    <div class="bar-line bar-green"></div>
+    <div class="fee-label">Fees To Be Collected</div>
   </div>
+
+  <div class="fee-card">
+    <div class="fee-amount text-primary">0</div>
+    <div class="bar-line bar-blue"></div>
+    <div class="fee-label">Previously Paid</div>
+  </div>
+
+  <div class="fee-card">
+    <div class="fee-amount" style="color:#b8860b;">5,95,500</div>
+    <div class="bar-line bar-gold"></div>
+    <div class="fee-label">Paid</div>
+  </div>
+
+  <div class="fee-card">
+    <div class="fee-amount text-danger">0</div>
+    <div class="bar-line bar-red"></div>
+    <div class="fee-label">Outstanding Amount</div>
+  </div>
+
+  <!-- ================= SEMESTER TABLE ================= -->
+  <div class="tbl-box">
+    <h5 class="fw-bold mb-2">Semester Fees</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered text-center">
+        <thead class="table-light">
+          <tr>
+            <th>Semester</th>
+            <th>Fees To Be Collected</th>
+            <th>Refunded</th>
+            <th>Previously Paid</th>
+            <th>Paid</th>
+            <th>Outstanding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>1,75,000</td><td>50,000</td><td>0</td><td class="text-success">1,75,000</td><td class="text-danger">0</td>
+          </tr>
+          <tr>
+            <td>2</td><td>1,75,000</td><td>0</td><td>0</td><td class="text-success">1,75,000</td><td class="text-danger">0</td>
+          </tr>
+        </tbody>
+        <tfoot class="table-light fw-bold">
+          <tr>
+            <td>Total</td>
+            <td>3,50,000</td>
+            <td>50,000</td>
+            <td>0</td>
+            <td class="text-success">3,50,000</td>
+            <td class="text-danger">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- ================= HOSTEL TABLE ================= -->
+  <div class="tbl-box">
+    <h5 class="fw-bold mb-2">Hostel Fee</h5>
+
+    <div class="table-responsive">
+      <table class="table table-bordered text-center">
+        <thead class="table-light">
+          <tr>
+            <th>Hostel</th>
+            <th>Year</th>
+            <th>Fees</th>
+            <th>Paid</th>
+            <th>Outstanding</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>TAGORE BHAWAN - A</td>
+            <td>2024-25</td>
+            <td>1,19,500</td>
+            <td class="text-success">1,19,500</td>
+            <td class="text-danger">0</td>
+          </tr>
+
+          <tr>
+            <td>TAGORE BHAWAN - C</td>
+            <td>2025-26</td>
+            <td>1,24,000</td>
+            <td class="text-success">1,24,000</td>
+            <td class="text-danger">0</td>
+          </tr>
+        </tbody>
+
+        <tfoot class="table-light fw-bold">
+          <tr>
+            <td colspan="2">Total</td>
+            <td>2,43,500</td>
+            <td class="text-success">2,43,500</td>
+            <td class="text-danger">0</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+
 </section>
+
  
 
 
