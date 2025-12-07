@@ -704,7 +704,7 @@ $subjects = [
 </style>
 
 
-<h4 class="fw-bold mt-4">🍽️  Mess Menu</h4>
+<h4 class="fw-bold mt-4">🍽️  Mess Menu (DEC 01-08)</h4>
 
 <!-- Navigation Tabs -->
 <div class="mess-nav">
