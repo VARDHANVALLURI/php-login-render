@@ -118,23 +118,13 @@ body {
 
 
 <!-- ================= ATTENDANCE PAGE ================ -->
-<section id="attendance" class="page">
-  <button class="back-btn" onclick="openPage('home')"><i class="bi bi-arrow-left"></i> Back</button>
-  <h3>Attendance</h3>
-   <!-- ATTENDANCE -->
-
-  <div style="background:#000;color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:600;font-size:14px;margin-bottom:12px;">
-    ⏳ Attendance updates daily at 3:00 AM • Weekly summary below
-  </div>
-
+ <!-- ===================== ATTENDANCE PAGE ===================== -->
 
 <?php
 /* ---------------------
-   MANUAL ATTENDANCE DATA
+   ATTENDANCE DATA BLOCK
+   REQUIRED FOR PAGE TO WORK
    --------------------- */
-
-// Each date contains slot values: "P" (Present), "A" (Absent), "-" (No class)
-// You can add/remove dates and slots anytime.
 
 $attendance = [
     "2025-12-05"=>["P","P","P","P","-"],
@@ -147,8 +137,19 @@ $attendance = [
     "2025-11-24"=>["P","P","P","-","-"],
 ];
 
-    
-// Calculate totals
+$subjects = [
+    "Operating Systems"            => ["present"=>6,"total"=>6],
+    "Operating Systems Lab"        => ["present"=>2,"total"=>2],
+    "Python"                       => ["present"=>4,"total"=>4],
+    "Python Lab"                   => ["present"=>2,"total"=>2],
+    "Networking"                   => ["present"=>4,"total"=>4],
+    "Networking Lab"               => ["present"=>2,"total"=>2],
+    "Software Engineering"         => ["present"=>6,"total"=>6],
+    "Software Engineering Lab"     => ["present"=>2,"total"=>2],
+    "Cryptography"                 => ["present"=>5,"total"=>5],
+    "PGPD"                         => ["present"=>1,"total"=>2],
+];
+
 $totalPresent = 0;
 $totalSlots = 0;
 
@@ -159,162 +160,253 @@ foreach ($attendance as $date => $slots) {
     }
 }
 
-$percent = $totalSlots > 0 ? round(($totalPresent / $totalSlots) * 100, 2) : 0;
-
-// Maximum slots = 5
+$percent = ($totalSlots > 0) ? round(($totalPresent / $totalSlots) * 100, 2) : 0;
 $maxSlots = 5;
+?>
+<section id="attendance" class="page" style="display:none;">
 
-// Helper to get weekday
-function getDayName($date) {
-    return date("D", strtotime($date));
+
+<button class="back-btn" onclick="openPage('home')">
+  <i class="bi bi-arrow-left"></i> Back
+</button>
+
+<h3 class="fw-bold mb-2">Attendance</h3>
+
+<style>
+.att-tab-nav {
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+  overflow-x:auto;
 }
-?>
+.att-tab-nav::-webkit-scrollbar { display:none; }
 
-<style>
-.att-card{background:#fff;border-radius:14px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,0.06);margin-bottom:14px;}
-.att-title{font-size:20px;font-weight:700;}
-.att-sub{font-size:14px;color:#555;margin-top:2px;}
-.att-bar{width:100%;height:9px;background:#e3e3e3;border-radius:10px;margin-top:10px;overflow:hidden;}
-.att-bar-fill{height:100%;background:#26c85f;}
-.att-percent{text-align:right;font-weight:700;color:#1fa950;margin-top:4px;}
+.att-tab-btn {
+  padding:10px 18px;
+  border:none;
+  background:#e5e7eb;
+  border-radius:10px;
+  font-weight:600;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:0.2s;
+}
 
-.att-status-box{display:flex;justify-content:space-between;background:#fff;padding:14px;border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);font-size:14px;margin-bottom:14px;}
-.att-ok{color:#27ae60;font-weight:600;}
-.att-bad{color:#e74c3c;font-weight:600;}
-.att-mid{color:#e67e22;font-weight:600;}
-.att-info{color:#3498db;font-weight:600;}
-.att-legend{font-size:13px;color:#444;margin-bottom:8px;}
+.att-tab-btn.active {
+  background:#2563eb;
+  color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
 
-.att-table{background:#fff;border-radius:14px;overflow:hidden;
-box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-.att-header,.att-row{display:flex;padding:12px;border-bottom:1px solid #eee;}
-.att-header{background:#f8fafc;font-weight:700;}
-.att-col{flex:1;text-align:center;}
+.att-box {
+  background:#fff;
+  padding:16px;
+  border-radius:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,0.1);
+  margin-bottom:18px;
+}
 
-.att-slot-p{background:#e7fbe9;color:#27ae60;font-weight:700;border-radius:10px;padding:6px 0;}
-.att-slot-a{background:#fdecea;color:#c0392b;font-weight:700;border-radius:10px;padding:6px 0;}
-.att-slot-n{background:#f0f0f0;color:#666;border-radius:10px;padding:6px 0;}
-</style>
+.att-percent-bar {
+  width:100%;
+  height:14px;
+  background:#e5e7eb;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:10px;
+}
+.att-percent-fill {
+  height:100%;
+  background:#22c55e;
+  transition:0.3s;
+}
 
+.att-summary-row {
+  display:flex;
+  justify-content:space-between;
+  font-size:15px;
+  margin-top:10px;
+}
+.att-summary-label { font-weight:600; color:#333; }
+.att-summary-val { font-weight:700; }
 
-<!-- TOP CARD -->
-<div class="att-card">
-    <div class="att-title">Sem 4</div>
-    <div class="att-sub">A.Y. 2025–26 • Even</div>
-
-    <div class="att-bar">
-        <div class="att-bar-fill" style="width: <?= $percent ?>%;"></div>
-    </div>
-
-    <div class="att-percent"><?= $percent ?>%</div>
-</div>
-
-<!-- STATUS ROW -->
-<div class="att-status-box">
-    <div class="att-ok">Present: <b><?= $totalPresent ?> / <?= $totalSlots ?></b></div>
-    <div class="att-bad">Absent: <b><?= $totalSlots - $totalPresent ?></b></div>
-    <div class="att-mid">Pending: <b>0</b></div>
-    <div class="att-info">No Attendance: <b>0</b></div>
-</div>
-
-<div class="att-legend">P = Present, A = Absent, – = No Lecture/Lab</div>
-
-<!-- DYNAMIC TABLE -->
-<div class="att-table">
-
-    <!-- TABLE HEADER -->
-    <div class="att-header">
-        <div class="att-col">Date</div>
-        <?php for ($i=1; $i <= $maxSlots; $i++): ?>
-            <div class="att-col">Slot <?= $i ?></div>
-        <?php endfor; ?>
-    </div>
-
-    <!-- TABLE ROWS -->
-    <?php foreach ($attendance as $date => $slots): ?>
-        <div class="att-row">
-
-            <!-- DATE + DAY -->
-            <div class="att-col">
-                <?= date("d-M-y", strtotime($date)) ?><br>
-                <span style="font-size:12px;color:#777;"><?= getDayName($date) ?></span>
-            </div>
-
-            <!-- SLOT VALUES -->
-            <?php for ($i=0; $i < $maxSlots; $i++): ?>
-
-                <div class="att-col">
-                    <?php
-                    if (!isset($slots[$i])) {
-                        echo '<div class="att-slot-n">-</div>';
-                    } else if ($slots[$i] === "P") {
-                        echo '<div class="att-slot-p">P</div>';
-                    } else if ($slots[$i] === "A") {
-                        echo '<div class="att-slot-a">A</div>';
-                    } else {
-                        echo '<div class="att-slot-n">-</div>';
-                    }
-                    ?>
-                </div>
-
-            <?php endfor; ?>
-
-        </div>
-    <?php endforeach; ?>
-
-</div>
-
-  <!-- SUBJECT WISE ATTENDANCE -->
-<br><br>
-<h4 class="section-title">Subject Wise Attendance</h4>
-
-<?php
-$subjects = [
-"Operating Systems"=>["present"=>06,"total"=>06],
-"Operating Systems Lab"=>["present"=>02,"total"=>02],
-"Python"=>["present"=>04,"total"=>04],
-"Python Lab"=>["present"=>02,"total"=>02],
-"Networking"=>["present"=>04,"total"=>04],
-"Networking Lab"=>["present"=>02,"total"=>02],
-"Software Engineering"=>["present"=>06,"total"=>06],
-"Software Engineering Lab"=>["present"=>02,"total"=>02],
-"Cryptography"=>["present"=>05,"total"=>05],
-"PGPD"=>["present"=>01,"total"=>02]
-];
-?>
-
-<style>
 .sub-card{
   background:#fff;
   padding:14px;
   border-radius:14px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.06);
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
   margin-bottom:12px;
 }
-.sub-name{font-size:16px;font-weight:700;margin-bottom:6px;}
-.sub-info{font-size:14px;color:#555;}
+
+.sub-name { font-size:16px; font-weight:700; margin-bottom:5px; }
+.sub-info { font-size:14px; color:#555; }
+
+.att-table {
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+
+.att-header,.att-row {
+  display:flex;
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+.att-header { background:#f8fafc; font-weight:700; }
+.att-col { flex:1; text-align:center; }
+
+.att-slot-p { background:#e7fbe9; padding:6px 0; border-radius:10px; font-weight:700; color:#22c55e; }
+.att-slot-a { background:#fdecec; padding:6px 0; border-radius:10px; font-weight:700; color:#dc2626; }
+.att-slot-n { background:#f1f1f1; padding:6px 0; border-radius:10px; font-weight:700; color:#555; }
+
+.faculty-card {
+  background:#fff;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.07);
+  margin-bottom:12px;
+}
+.faculty-name {
+  font-weight:700;
+  font-size:16px;
+  margin-bottom:4px;
+}
+.faculty-sub {
+  font-size:14px;
+  color:#555;
+}
 </style>
 
-<?php foreach($subjects as $name => $data): ?>
-<?php
-    $present = $data["present"];
-    $total   = $data["total"];
-    $absent  = $total - $present;
-?>
+<!-- TAB BUTTONS -->
+<div class="att-tab-nav">
+  <button class="att-tab-btn active" onclick="openAttTab('att-overview', this)">Overview</button>
+  <button class="att-tab-btn" onclick="openAttTab('att-daywise', this)">Day-Wise</button>
+  <button class="att-tab-btn" onclick="openAttTab('att-faculty', this)">Faculty Info</button>
+</div>
+<!-- =============== OVERVIEW TAB =============== -->
+<div id="att-overview" class="att-tab">
 
-<div class="sub-card">
-    <div class="sub-name"><?= $name ?></div>
+  <div class="att-box">
+    <h4 class="fw-bold">Attendance Summary</h4>
 
-    <div class="sub-info">
-        Present: <b><?= $present ?></b> / <?= $total ?><br>
-        Absent: <b><?= $absent ?></b> / <?= $total ?>
+    <div style="font-size:32px; font-weight:800; margin-top:10px;">
+      <?= $percent ?>%
     </div>
+
+    <div class="att-percent-bar">
+      <div class="att-percent-fill" style="width: <?= $percent ?>%;"></div>
+    </div>
+
+    <div class="att-summary-row">
+      <span class="att-summary-label">Present:</span>
+      <span class="att-summary-val"><?= $totalPresent ?> / <?= $totalSlots ?></span>
+    </div>
+
+    <div class="att-summary-row">
+      <span class="att-summary-label">Absent:</span>
+      <span class="att-summary-val"><?= $totalSlots - $totalPresent ?></span>
+    </div>
+
+  </div>
+
+  <!-- SUBJECT WISE -->
+  <h5 class="fw-bold mb-2">Subject Wise Attendance</h5>
+
+  <?php foreach($subjects as $name => $data): 
+      $present = $data["present"]; $total = $data["total"]; ?>
+
+    <div class="sub-card">
+      <div class="sub-name"><?= $name ?></div>
+      <div class="sub-info">
+        Present: <b><?= $present ?></b> / <?= $total ?> <br>
+        Absent: <b><?= $total - $present ?></b>
+      </div>
+    </div>
+
+  <?php endforeach; ?>
+</div>
+<!-- =============== DAY-WISE TAB =============== -->
+<div id="att-daywise" class="att-tab" style="display:none;">
+
+  <div class="att-table">
+
+    <div class="att-header">
+      <div class="att-col">Date</div>
+      <?php for ($i=1; $i <= $maxSlots; $i++): ?>
+        <div class="att-col">Slot <?= $i ?></div>
+      <?php endfor; ?>
+    </div>
+
+    <?php foreach ($attendance as $date => $slots): ?>
+      <div class="att-row">
+
+        <div class="att-col">
+          <?= date("d-M-y", strtotime($date)) ?><br>
+          <span style="font-size:12px; color:#777;">
+            <?= date("D", strtotime($date)) ?>
+          </span>
+        </div>
+
+        <?php for ($i=0; $i < $maxSlots; $i++): ?>
+          <div class="att-col">
+            <?php
+              if (!isset($slots[$i])) echo "<div class='att-slot-n'>-</div>";
+              else if ($slots[$i] === "P") echo "<div class='att-slot-p'>P</div>";
+              else if ($slots[$i] === "A") echo "<div class='att-slot-a'>A</div>";
+              else echo "<div class='att-slot-n'>-</div>";
+            ?>
+          </div>
+        <?php endfor; ?>
+
+      </div>
+    <?php endforeach; ?>
+
+  </div>
+
+</div>
+<!-- =============== FACULTY INFO =============== -->
+<div id="att-faculty" class="att-tab" style="display:none;">
+
+  <h5 class="fw-bold mb-2">Faculty Information</h5>
+
+  <div class="faculty-card">
+    <div class="faculty-name">TANVI PATEL (TP)</div>
+    <div class="faculty-sub">Operating System, OS Lab</div>
+  </div>
+
+  <div class="faculty-card">
+    <div class="faculty-name">NEHA WAGH (NW)</div>
+    <div class="faculty-sub">Software Engineering, SE Lab</div>
+  </div>
+
+  <div class="faculty-card">
+    <div class="faculty-name">Khushal Bhoyar (KB)</div>
+    <div class="faculty-sub">Network Security, NSC Lab</div>
+  </div>
+
+  <div class="faculty-card">
+    <div class="faculty-name">RAJ KELAWALA (RK)</div>
+    <div class="faculty-sub">Python, Python Lab</div>
+  </div>
+
+  <div class="faculty-card">
+    <div class="faculty-name">Debojyoti Chakraborty (DC)</div>
+    <div class="faculty-sub">Cryptography</div>
+  </div>
+
 </div>
 
-<?php endforeach; ?>
 
-</section>   <!-- CLOSE ATTENDANCE SECTION -->
+</section>   
+<script>
+function openAttTab(id, btn){
+  document.querySelectorAll(".att-tab").forEach(t => t.style.display="none");
+  document.getElementById(id).style.display = "block";
+
+  document.querySelectorAll(".att-tab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+</script>
 
 
 <!-- ================= STUDENT INFO ================ -->
@@ -704,7 +796,7 @@ $subjects = [
 </style>
 
 
-<h4 class="fw-bold mt-4">🍽️  Mess Menu (DEC 01-08)</h4>
+<h4 class="fw-bold mt-4">🍽️  Mess Menu(01DEC-08DEC)</h4>
 
 <!-- Navigation Tabs -->
 <div class="mess-nav">
@@ -1129,7 +1221,7 @@ function openMenu(id){
 }
 </script>
 
-</script>
+
 
 </body>
 </html>
