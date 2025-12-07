@@ -726,93 +726,112 @@ function openAttTab(id, btn){
 
 
   <!-- ===================== MESS MENU (Premium UI Fixed) ===================== -->
+   <?php
+// Get this week's Monday
+$weekStart = strtotime("monday this week");
+
+// Build days array (Monday to Sunday)
+$messDays = [];
+for ($i = 0; $i < 7; $i++) {
+    $ts = strtotime("+$i day", $weekStart);
+    $messDays[] = [
+        "id"   => $i,
+        "name" => strtoupper(date("D", $ts)), // MON, TUE…
+        "date" => date("d M", $ts)            // 02 Dec
+    ];
+}
+?>
 <div id="messmenu" style="display:none;">
 
-    
 <style>
-/* ======= Premium Mess Menu UI ======= */
 .mess-nav {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  margin-top: 10px;
-  scrollbar-width: none;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  margin-top:10px;
+  scrollbar-width:none;
 }
-.mess-nav::-webkit-scrollbar { display: none; }
+.mess-nav::-webkit-scrollbar { display:none; }
 
 .mess-nav-btn {
-  padding: 10px 18px;
-  border-radius: 14px;
-  border: none;
-  background: #f3f4f6;
-  font-weight: 600;
-  color: #475569;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding:10px 18px;
+  border-radius:14px;
+  border:none;
+  background:#f3f4f6;
+  font-weight:600;
+  color:#475569;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:0.25s ease;
+  text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
 .mess-nav-btn.active {
-  background: #4f46e5;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(79,70,229,0.35);
+  background:#4f46e5;
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(79,70,229,0.35);
+}
+
+.mess-date {
+  font-size:12px;
+  color:#6b7280;
+  font-weight:500;
 }
 
 .meal-card {
-  background: white;
-  padding: 18px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.09);
-  margin-top: 15px;
-  animation: fadeSlide 0.35s ease;
+  background:white;
+  padding:18px;
+  border-radius:16px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.09);
+  margin-top:15px;
+  animation:fadeSlide 0.35s ease;
 }
 
 .meal-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 10px;
+  font-size:18px;
+  font-weight:700;
+  color:#1e293b;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
 .meal-item {
-  font-size: 15px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: #f8fafc;
-  margin-bottom: 8px;
-  color: #334155;
-  border-left: 4px solid #4f46e5;
+  font-size:15px;
+  background:#f8fafc;
+  padding:10px 12px;
+  border-radius:12px;
+  margin-bottom:8px;
+  border-left:4px solid #4f46e5;
+  color:#334155;
 }
 
 @keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 </style>
 
+<h4 class="fw-bold mt-4">🍽️ Mess Menu</h4>
 
-<h4 class="fw-bold mt-4">🍽️  Mess Menu(01DEC-08DEC)</h4>
-
-<!-- Navigation Tabs -->
+<!-- NAVIGATION -->
 <div class="mess-nav">
-  <button class="mess-nav-btn active" onclick="openPremiumMess('mess-mon', this)">Mon</button>
-  <button class="mess-nav-btn" onclick="openPremiumMess('mess-tue', this)">Tue</button>
-  <button class="mess-nav-btn" onclick="openPremiumMess('mess-wed', this)">Wed</button>
-  <button class="mess-nav-btn" onclick="openPremiumMess('mess-thu', this)">Thu</button>
-  <button class="mess-nav-btn" onclick="openPremiumMess('mess-fri', this)">Fri</button>
-  <button class="mess-nav-btn" onclick="openPremiumMess('mess-sat', this)">Sat</button>
-  <button class="mess-nav-btn" onclick="openPremiumMess('mess-sun', this)">Sun</button>
+  <?php foreach ($messDays as $d): ?>
+    <button class="mess-nav-btn <?= $d['id']==0?'active':'' ?>"
+            onclick="openPremiumMess('mess-<?= $d['id'] ?>', this)">
+      <?= $d['name'] ?><br>
+      <span class="mess-date"><?= $d['date'] ?></span>
+    </button>
+  <?php endforeach; ?>
 </div>
 
+<!-- DAY MENUS -->
 
-<!-- ================= DAY MENUS ================= -->
-
-<div id="mess-mon" class="meal-card">
+<!-- MONDAY -->
+<div id="mess-0" class="meal-card">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Veg Upma, Chutney, Tea/Coffee</div>
 
@@ -823,7 +842,8 @@ function openAttTab(id, btn){
   <div class="meal-item">Dum Aloo, Rice, Roti</div>
 </div>
 
-<div id="mess-tue" class="meal-card" style="display:none;">
+<!-- TUESDAY -->
+<div id="mess-1" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Idly, Peanut Chutney, Tea/Coffee</div>
 
@@ -834,7 +854,8 @@ function openAttTab(id, btn){
   <div class="meal-item">Beetroot Dal Curry, Rice</div>
 </div>
 
-<div id="mess-wed" class="meal-card" style="display:none;">
+<!-- WEDNESDAY -->
+<div id="mess-2" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Imli Rice, Tea/Coffee</div>
 
@@ -845,7 +866,8 @@ function openAttTab(id, btn){
   <div class="meal-item">Brinjal Curry, Rice</div>
 </div>
 
-<div id="mess-thu" class="meal-card" style="display:none;">
+<!-- THURSDAY -->
+<div id="mess-3" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Onion Pakoda, Tea/Coffee</div>
 
@@ -856,7 +878,8 @@ function openAttTab(id, btn){
   <div class="meal-item">Veg Biryani + Raita</div>
 </div>
 
-<div id="mess-fri" class="meal-card" style="display:none;">
+<!-- FRIDAY -->
+<div id="mess-4" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Veg Pasta, Tea/Coffee</div>
 
@@ -867,7 +890,8 @@ function openAttTab(id, btn){
   <div class="meal-item">Tomato Curry, Roti</div>
 </div>
 
-<div id="mess-sat" class="meal-card" style="display:none;">
+<!-- SATURDAY -->
+<div id="mess-5" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Semia Upma, Tea/Coffee</div>
 
@@ -878,7 +902,8 @@ function openAttTab(id, btn){
   <div class="meal-item">Dry Cauliflower</div>
 </div>
 
-<div id="mess-sun" class="meal-card" style="display:none;">
+<!-- SUNDAY -->
+<div id="mess-6" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
   <div class="meal-item">Bread Jam</div>
 
@@ -891,39 +916,44 @@ function openAttTab(id, btn){
 
 
 <script>
-function openPremiumMess(day, btn) {
+function openPremiumMess(dayId, btn){
   document.querySelectorAll(".meal-card").forEach(c => c.style.display = "none");
-  document.getElementById(day).style.display = "block";
+  document.getElementById(dayId).style.display = "block";
 
   document.querySelectorAll(".mess-nav-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
 }
 </script>
-
 <script>
 function openHostelTab(tab, btn) {
-  // Hide all hostel tab content
+
+  // Hide all hostel sections
   document.getElementById("info").style.display = "none";
   document.getElementById("passes").style.display = "none";
   document.getElementById("messmenu").style.display = "none";
 
-  // Show selected tab
-  if(tab === "mess") tab = "messmenu";
+  // Convert 'mess' to correct section ID
+  if (tab === "mess") tab = "messmenu";
+
+  // Show selected section
   document.getElementById(tab).style.display = "block";
 
   // Update active button
   document.querySelectorAll(".hostel-tab-btn")
     .forEach(b => b.classList.remove("active"));
-    
+  
   btn.classList.add("active");
 
   // Smooth scroll
-  document.getElementById("hostel").scrollIntoView({behavior: "smooth"});
+  document.getElementById("hostel").scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
 
 </div>
+
+
+
 
 </section>
 
