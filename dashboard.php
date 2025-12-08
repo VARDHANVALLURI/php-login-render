@@ -833,87 +833,86 @@ for ($i = 0; $i < 7; $i++) {
 <!-- MONDAY -->
 <div id="mess-0" class="meal-card">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Veg Upma, Chutney, Tea/Coffee</div>
+  <div class="meal-item">POHA, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Dudhi Sabji, Dal, Rice, Papad</div>
+  <div class="meal-item">ALOO DHUM, DAL, PAPAD, RICE</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Dum Aloo, Rice, Roti</div>
+  <div class="meal-item">DRUMSTICK TOMATO, RICE, SAMBAR</div>
 </div>
 
-<!-- TUESDAY -->
-<div id="mess-1" class="meal-card" style="display:none;">
+<!-- TUESDAY 09 DEC -->
+<div id="mess-1" class="meal-card">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Idly, Peanut Chutney, Tea/Coffee</div>
+  <div class="meal-item">Dabeli & Sauce, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Palak Dal, Rice</div>
+  <div class="meal-item">Tindora Fry, Matar, Miriyala Rasam, Roti, Dal, Plain Rice, Papad, Salad, Buttermilk</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Beetroot Dal Curry, Rice</div>
+  <div class="meal-item">Mirchi Onion Tomato Dry Sabji, Roti, Sambar, Rice, Chutney</div>
 </div>
 
-<!-- WEDNESDAY -->
+<!-- WEDNESDAY 10 DEC -->
 <div id="mess-2" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Imli Rice, Tea/Coffee</div>
+  <div class="meal-item">Corn Peanut Chaat, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Jeera Aloo, Tomato Dal</div>
+  <div class="meal-item">Masala Ravvaya, Moong, Pachi Pulusu, Roti, Tomato Dal, Plain Rice, Papad, Salad, Buttermilk</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Brinjal Curry, Rice</div>
+  <div class="meal-item">Cauliflower Matar, Masala Roti, Sambar, Rice, Salad</div>
 </div>
 
-<!-- THURSDAY -->
+<!-- THURSDAY 11 DEC -->
 <div id="mess-3" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Onion Pakoda, Tea/Coffee</div>
+  <div class="meal-item">Paratha & Chutney, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Cabbage Matar, Dal</div>
+  <div class="meal-item">Cabbage Matar, Chana Dal, Tomato Rasam, Roti, Dal, Plain Rice, Papad, Buttermilk, Salad, Amla Pickle</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Veg Biryani + Raita</div>
+  <div class="meal-item">Aloo Sukhi Bhaji, Monawali Roti, Dahi Raita, Rice</div>
 </div>
 
-<!-- FRIDAY -->
+<!-- FRIDAY 12 DEC -->
 <div id="mess-4" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Veg Pasta, Tea/Coffee</div>
+  <div class="meal-item">Lemon Rice, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Drumstick Dal</div>
+  <div class="meal-item">Fansi Sabji, Desi Chana, Miriyala Rasam, Roti, Dal, Plain Rice, Papad, Salad, Buttermilk</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Tomato Curry, Roti</div>
+  <div class="meal-item">Matar Paneer, Roti, Majjiga Pulusu, Rice</div>
 </div>
 
-<!-- SATURDAY -->
+<!-- SATURDAY 13 DEC -->
 <div id="mess-5" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Semia Upma, Tea/Coffee</div>
+  <div class="meal-item">Idly Sambhar, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Aloo Palak, Dal</div>
+  <div class="meal-item">Suran Sabji, Tuver, Pachi Pulusu, Roti, Drumstick Dal, Plain Rice, Papad, Salad</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Dry Cauliflower</div>
+  <div class="meal-item">Gutti Vankaya, Rice, Sambar, Chutney</div>
 </div>
 
-<!-- SUNDAY -->
+<!-- SUNDAY 14 DEC -->
 <div id="mess-6" class="meal-card" style="display:none;">
   <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Bread Jam</div>
+  <div class="meal-item">Bread Butter, Tea/Coffee</div>
 
   <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Chole, Puri, Jeera Rice, Sweet</div>
+  <div class="meal-item">Aloo Sabji, Sweet, Papad, Salad</div>
 
   <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Sambar Rice</div>
+  <div class="meal-item">Rice, Sambar, Chutney</div>
 </div>
-
 
 <script>
 function openPremiumMess(dayId, btn){
