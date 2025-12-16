@@ -127,7 +127,8 @@ body {
    --------------------- */
 
 $attendance = [
-    "2025-12-13"=>["P","P","-","A","-"],
+    "2025-12-16"=>["P","P","P","P","A"],
+    "2025-12-13"=>["P","P","P","A","-"],
     "2025-12-12"=>["P","P","P","P","-"],
     "2025-12-11"=>["P","P","P","P","P"],
     "2025-12-09"=>["P","P","P","P","P"],
@@ -143,16 +144,18 @@ $attendance = [
 ];
 
 $subjects = [
-    "Operating Systems"            => ["present"=>9,"total"=>9],
+    "Operating Systems"            => ["present"=>10,"total"=>10],
     "Operating Systems Lab"        => ["present"=>3,"total"=>3],
-    "Python"                       => ["present"=>6,"total"=>6],
+    "Python"                       => ["present"=>8,"total"=>8],
     "Python Lab"                   => ["present"=>3,"total"=>3],
-    "Networking"                   => ["present"=>6,"total"=>6],
+    "Networking"                   => ["present"=>8,"total"=>8],
     "Networking Lab"               => ["present"=>3,"total"=>3],
-    "Software Engineering"         => ["present"=>9,"total"=>9],
-    "Software Engineering Lab"     => ["present"=>3,"total"=>3],
+    "Software Engineering"         => ["present"=>10,"total"=>10],
+    "Software Engineering Lab"     => ["present"=>3,"total"=>4],
     "Cryptography"                 => ["present"=>8,"total"=>8],
+    "Cryptography Lab"             => ["present"=>0,"total"=>1],
     "PGPD"                         => ["present"=>1,"total"=>3],
+    "PALO ALTO COURSE"             => ["present"=>1, "total"=>1],
 ];
 
 $totalPresent = 0;
@@ -728,196 +731,113 @@ function openAttTab(id, btn){
   </div>
 
 
+</div>
 
+<!-- ===================== MESS MENU ===================== -->
+<div id="messmenu" class="hostel-box" style="display:none;">
 
-  <!-- ===================== MESS MENU (Premium UI Fixed) ===================== -->
-   <?php
-// Get this week's Monday
-$weekStart = strtotime("monday this week");
+  <h4 class="fw-bold mb-3">🍽️ Mess Menu (16 – 23 Dec)</h4>
 
-// Build days array (Monday to Sunday)
-$messDays = [];
-for ($i = 0; $i < 7; $i++) {
-    $ts = strtotime("+$i day", $weekStart);
-    $messDays[] = [
-        "id"   => $i,
-        "name" => strtoupper(date("D", $ts)), // MON, TUE…
-        "date" => date("d M", $ts)            // 02 Dec
-    ];
-}
-?>
-<div id="messmenu" style="display:none;">
+  <!-- DAY BUTTONS -->
+  <div class="d-flex gap-2 overflow-auto mb-3">
+    <button class="btn btn-primary btn-sm" onclick="showMess(0)">16 Tue</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(1)">17 Wed</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(2)">18 Thu</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(3)">19 Fri</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(4)">20 Sat</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(5)">21 Sun</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(6)">22 Mon</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(7)">23 Tue</button>
+  </div>
 
+  <!-- DAY 1 -->
+  <div class="mess-card">
+    <b>🥞 Breakfast:</b> White Dhokla & Coconut Chutney, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Dana Methi, Aloo Fry, Matar Rasam, Roti, Palak Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Cabbage Dry, Sambar, Rice, Chutney
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> South Vada & Chutney, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Cauliflower, Rava Rasam, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Cut Pongal, Sambar, Rice
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Tamarind Rice, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Tindora Fry, Chana Dal, Dal Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Aloo Kurma, Roti, Veg Dum, Rice
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Veg Upma, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Drumstick Tomato, Desi Chana, Rasam, Roti, Palak Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Begari Baingan, Roti, Majjiga Pulusu, Rice
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Dosa & Chutney, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Dahi Onion Sabji, Tuver Rasam, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Matar Kurma, Roti, Lemon Rice
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Bread Jam, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Chole, Puri, Kadhi, Jeera Rice, Fries, Papad, Salad<br>
+    <b>🍽️ Dinner:</b> Sambar Rice / Curd Rice
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Veg Pasta, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Dudhi Chana Dal, Chor Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Palak Sabji, Roti, Sambar, Rice
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="mess-card d-none">
+    <b>🍽️ Dinner:</b> Rice, Sambar, Chutney
+  </div>
+
+</div>
+
+<!-- ===================== MESS MENU STYLE ===================== -->
 <style>
-.mess-nav {
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  padding-bottom:8px;
-  margin-top:10px;
-  scrollbar-width:none;
-}
-.mess-nav::-webkit-scrollbar { display:none; }
-
-.mess-nav-btn {
-  padding:10px 18px;
-  border-radius:14px;
-  border:none;
-  background:#f3f4f6;
-  font-weight:600;
-  color:#475569;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:0.25s ease;
-  text-align:center;
-  box-shadow:0 2px 6px rgba(0,0,0,0.08);
-}
-.mess-nav-btn.active {
-  background:#4f46e5;
-  color:#fff;
-  transform:translateY(-2px);
-  box-shadow:0 6px 14px rgba(79,70,229,0.35);
-}
-
-.mess-date {
-  font-size:12px;
-  color:#6b7280;
-  font-weight:500;
-}
-
-.meal-card {
-  background:white;
-  padding:18px;
-  border-radius:16px;
-  box-shadow:0 4px 16px rgba(0,0,0,0.09);
-  margin-top:15px;
-  animation:fadeSlide 0.35s ease;
-}
-
-.meal-header {
-  font-size:18px;
-  font-weight:700;
-  color:#1e293b;
-  margin-bottom:10px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.meal-item {
-  font-size:15px;
-  background:#f8fafc;
-  padding:10px 12px;
+.mess-card{
+  background:#fff;
+  padding:14px;
   border-radius:12px;
-  margin-bottom:8px;
-  border-left:4px solid #4f46e5;
-  color:#334155;
-}
-
-@keyframes fadeSlide {
-  from { opacity:0; transform:translateY(10px); }
-  to   { opacity:1; transform:translateY(0); }
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  font-size:14px;
 }
 </style>
 
-<h4 class="fw-bold mt-4">🍽️ Mess Menu</h4>
+<!-- ===================== MESS MENU SCRIPT ===================== -->
+<script>
+function showMess(index){
+  const cards = document.querySelectorAll(".mess-card");
+  const buttons = document.querySelectorAll("#messmenu button");
 
-<!-- NAVIGATION -->
-<div class="mess-nav">
-  <?php foreach ($messDays as $d): ?>
-    <button class="mess-nav-btn <?= $d['id']==0?'active':'' ?>"
-            onclick="openPremiumMess('mess-<?= $d['id'] ?>', this)">
-      <?= $d['name'] ?><br>
-      <span class="mess-date"><?= $d['date'] ?></span>
-    </button>
-  <?php endforeach; ?>
-</div>
+  cards.forEach(c => c.classList.add("d-none"));
+  cards[index].classList.remove("d-none");
 
-<!-- DAY MENUS -->
+  buttons.forEach(b => {
+    b.classList.remove("btn-primary");
+    b.classList.add("btn-outline-primary");
+  });
 
-<!-- MONDAY -->
-<div id="mess-0" class="meal-card">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">POHA, Tea/Coffee</div>
+  buttons[index].classList.remove("btn-outline-primary");
+  buttons[index].classList.add("btn-primary");
+}
+</script>
 
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">ALOO DHUM, DAL, PAPAD, RICE</div>
 
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">DRUMSTICK TOMATO, RICE, SAMBAR</div>
-</div>
 
-<!-- TUESDAY 09 DEC -->
-<div id="mess-1" class="meal-card">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Dabeli & Sauce, Tea/Coffee</div>
-
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Tindora Fry, Matar, Miriyala Rasam, Roti, Dal, Plain Rice, Papad, Salad, Buttermilk</div>
-
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Mirchi Onion Tomato Dry Sabji, Roti, Sambar, Rice, Chutney</div>
-</div>
-
-<!-- WEDNESDAY 10 DEC -->
-<div id="mess-2" class="meal-card" style="display:none;">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Corn Peanut Chaat, Tea/Coffee</div>
-
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Masala Ravvaya, Moong, Pachi Pulusu, Roti, Tomato Dal, Plain Rice, Papad, Salad, Buttermilk</div>
-
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Cauliflower Matar, Masala Roti, Sambar, Rice, Salad</div>
-</div>
-
-<!-- THURSDAY 11 DEC -->
-<div id="mess-3" class="meal-card" style="display:none;">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Paratha & Chutney, Tea/Coffee</div>
-
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Cabbage Matar, Chana Dal, Tomato Rasam, Roti, Dal, Plain Rice, Papad, Buttermilk, Salad, Amla Pickle</div>
-
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Aloo Sukhi Bhaji, Monawali Roti, Dahi Raita, Rice</div>
-</div>
-
-<!-- FRIDAY 12 DEC -->
-<div id="mess-4" class="meal-card" style="display:none;">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Lemon Rice, Tea/Coffee</div>
-
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Fansi Sabji, Desi Chana, Miriyala Rasam, Roti, Dal, Plain Rice, Papad, Salad, Buttermilk</div>
-
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Matar Paneer, Roti, Majjiga Pulusu, Rice</div>
-</div>
-
-<!-- SATURDAY 13 DEC -->
-<div id="mess-5" class="meal-card" style="display:none;">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Idly Sambhar, Tea/Coffee</div>
-
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Suran Sabji, Tuver, Pachi Pulusu, Roti, Drumstick Dal, Plain Rice, Papad, Salad</div>
-
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Gutti Vankaya, Rice, Sambar, Chutney</div>
-</div>
-
-<!-- SUNDAY 14 DEC -->
-<div id="mess-6" class="meal-card" style="display:none;">
-  <div class="meal-header">🥞 Breakfast</div>
-  <div class="meal-item">Bread Butter, Tea/Coffee</div>
-
-  <div class="meal-header">🍛 Lunch</div>
-  <div class="meal-item">Aloo Sabji, Sweet, Papad, Salad</div>
-
-  <div class="meal-header">🍽️ Dinner</div>
-  <div class="meal-item">Rice, Sambar, Chutney</div>
-</div>
 
 <script>
 function openPremiumMess(dayId, btn){
