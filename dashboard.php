@@ -721,6 +721,14 @@ function openAttTab(id, btn){
             <td>19-07-2025</td>
             <td><span class="badge bg-success">Approved</span></td>
           </tr>
+          <tr>
+            <td>3</td>
+            <td>Personal</td>
+            <td>LIMDA CUTTING</td>
+            <td>17-12-2025</td>
+            <td>17-12-2025</td>
+            <td><span class="badge bg-success">Approved</span></td>
+          </tr>
         </tbody>
       </table>
     </div>
