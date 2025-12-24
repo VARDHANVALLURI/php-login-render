@@ -127,6 +127,7 @@ body {
    --------------------- */
 
 $attendance = [
+    "2025-12-22"=>["P","P","A","A","A"]
     "2025-12-22"=>["A","A","-","-","-"],
     "2025-12-19"=>["P","-","-","-","-"],
     "2025-12-18"=>["P","P","P","P","A"],
@@ -147,14 +148,14 @@ $attendance = [
 ];
 
 $subjects = [
-    "Operating Systems"            => ["present"=>12,"total"=>12],
+    "Operating Systems"            => ["present"=>13,"total"=>13],
     "Operating Systems Lab"        => ["present"=>4,"total"=>4],
-    "Python"                       => ["present"=>9,"total"=>9],
+    "Python"                       => ["present"=>9,"total"=>10],
     "Python Lab"                   => ["present"=>3,"total"=>4],
-    "Networking"                   => ["present"=>9,"total"=>9],
+    "Networking"                   => ["present"=>10,"total"=>10],
     "Networking Lab"               => ["present"=>3,"total"=>4],
-    "Software Engineering"         => ["present"=>10,"total"=>10],
-    "Software Engineering Lab"     => ["present"=>3,"total"=>4],
+    "Software Engineering"         => ["present"=>10,"total"=>11],
+    "Software Engineering Lab"     => ["present"=>3,"total"=>5],
     "Cryptography"                 => ["present"=>8,"total"=>9],
     "Cryptography Lab"             => ["present"=>0,"total"=>1],
     "PGPD"                         => ["present"=>2,"total"=>3],
@@ -747,75 +748,78 @@ function openAttTab(id, btn){
 <!-- ===================== MESS MENU ===================== -->
 <div id="messmenu" class="hostel-box" style="display:none;">
 
-  <h4 class="fw-bold mb-3">🍽️ Mess Menu (16 – 23 Dec)</h4>
+  <h4 class="fw-bold mb-3">🍽️ Mess Menu (24 Dec – 31 Dec 2025)</h4>
 
   <!-- DAY BUTTONS -->
   <div class="d-flex gap-2 overflow-auto mb-3">
-    <button class="btn btn-primary btn-sm" onclick="showMess(0)">16 Tue</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(1)">17 Wed</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(2)">18 Thu</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(3)">19 Fri</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(4)">20 Sat</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(5)">21 Sun</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(6)">22 Mon</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(7)">23 Tue</button>
+    <button class="btn btn-primary btn-sm" onclick="showMess(0)">24 Wed</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(1)">25 Thu</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(2)">26 Fri</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(3)">27 Sat</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(4)">28 Sun</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(5)">29 Mon</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(6)">30 Tue</button>
+    <button class="btn btn-outline-primary btn-sm" onclick="showMess(7)">31 Wed</button>
   </div>
 
-  <!-- DAY 1 -->
+  <!-- 24 DEC -->
   <div class="mess-card">
-    <b>🥞 Breakfast:</b> White Dhokla & Coconut Chutney, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Dana Methi, Aloo Fry, Matar Rasam, Roti, Palak Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Cabbage Dry, Sambar, Rice, Chutney
+    <b>🥞 Breakfast:</b> Semiya Upma, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Dana Ringan, Papad Sabji, Math Rasam, Roti, Chana Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Beetroot Chana Dal Fry, Rice, Majjiga Pulusu
   </div>
 
-  <!-- DAY 2 -->
+  <!-- 25 DEC -->
   <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> South Vada & Chutney, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Cauliflower, Rava Rasam, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Cut Pongal, Sambar, Rice
+    <b>🥞 Breakfast:</b> Masala Idli, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Suran Sabji, Chana Dal Rasam, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Aloo Sukhi Bhaji, Rice, Masala Puri
   </div>
 
-  <!-- DAY 3 -->
+  <!-- 26 DEC -->
   <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Tamarind Rice, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Tindora Fry, Chana Dal, Dal Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Aloo Kurma, Roti, Veg Dum, Rice
+    <b>🥞 Breakfast:</b> Lemon Rice & Banana, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Masala Ravaiya, Desi Chana Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Cauliflower Fry, Rice, Sambar, Garlic Chutney
   </div>
 
-  <!-- DAY 4 -->
+  <!-- 27 DEC -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Methi Thepla & Tomato Pickle, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Fansi Sabji, Tuver Rasam, Roti, Palak Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Drumstick Tomato, Rice, Sambar, Chutney
+  </div>
+
+  <!-- 28 DEC -->
+  <div class="mess-card d-none">
+    <b>🥞 Breakfast:</b> Bread Butter, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Aloo Masala, Dal Tadka, Roti, Rice, Papad, Salad, Sweet<br>
+    <b>🍽️ Dinner:</b> Rice, Sweet
+  </div>
+
+  <!-- 29 DEC -->
   <div class="mess-card d-none">
     <b>🥞 Breakfast:</b> Veg Upma, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Drumstick Tomato, Desi Chana, Rasam, Roti, Palak Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Begari Baingan, Roti, Majjiga Pulusu, Rice
+    <b>🍛 Lunch:</b> Dudhi Chana Dal, Chora Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Brinjal Fry, Rice, Sambar, Chutney
   </div>
 
-  <!-- DAY 5 -->
+  <!-- 30 DEC -->
   <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Dosa & Chutney, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Dahi Onion Sabji, Tuver Rasam, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Matar Kurma, Roti, Lemon Rice
+    <b>🥞 Breakfast:</b> Bread Pakoda & Sauce, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Cabbage Sabji, Matar Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Aloo Green Chilli Fry, Rice, Sambar, Pickle
   </div>
 
-  <!-- DAY 6 -->
+  <!-- 31 DEC -->
   <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Bread Jam, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Chole, Puri, Kadhi, Jeera Rice, Fries, Papad, Salad<br>
-    <b>🍽️ Dinner:</b> Sambar Rice / Curd Rice
-  </div>
-
-  <!-- DAY 7 -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Veg Pasta, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Dudhi Chana Dal, Chor Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Palak Sabji, Roti, Sambar, Rice
-  </div>
-
-  <!-- DAY 8 -->
-  <div class="mess-card d-none">
-    <b>🍽️ Dinner:</b> Rice, Sambar, Chutney
+    <b>🥞 Breakfast:</b> Idli Rice, Tea/Coffee<br>
+    <b>🍛 Lunch:</b> Cabbage Sabji, Chana Dal, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
+    <b>🍽️ Dinner:</b> Roti, Palak Paneer, Rice, Majjiga Pulusu
   </div>
 
 </div>
+
 
 <!-- ===================== MESS MENU STYLE ===================== -->
 <style>
