@@ -127,6 +127,7 @@ body {
    --------------------- */
 
 $attendance = [
+    "2025-12-26"=>["P","P","P","P","-"],
     "2025-12-23"=>["P","P","A","A","A"],
     "2025-12-22"=>["A","A","-","-","-"],
     "2025-12-19"=>["P","-","-","-","-"],
@@ -148,17 +149,17 @@ $attendance = [
 ];
 
 $subjects = [
-    "Operating Systems"            => ["present"=>13,"total"=>13],
+    "Operating Systems"            => ["present"=>14,"total"=>14],
     "Operating Systems Lab"        => ["present"=>4,"total"=>4],
     "Python"                       => ["present"=>9,"total"=>10],
     "Python Lab"                   => ["present"=>3,"total"=>4],
     "Networking"                   => ["present"=>10,"total"=>10],
     "Networking Lab"               => ["present"=>3,"total"=>4],
-    "Software Engineering"         => ["present"=>10,"total"=>11],
+    "Software Engineering"         => ["present"=>11,"total"=>12],
     "Software Engineering Lab"     => ["present"=>3,"total"=>5],
-    "Cryptography"                 => ["present"=>8,"total"=>9],
+    "Cryptography"                 => ["present"=>10,"total"=>9],
     "Cryptography Lab"             => ["present"=>0,"total"=>1],
-    "PGPD"                         => ["present"=>2,"total"=>3],
+    "PGPD"                         => ["present"=>3,"total"=>4],
     "PALO ALTO COURSE"             => ["present"=>1, "total"=>1],
 ];
 
