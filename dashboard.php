@@ -127,6 +127,9 @@ body {
    --------------------- */
 
 $attendance = [
+    "2026-01-01"=>["A","P","A","-","-"],
+    "2025-12-30"=>["P","P","P","P","P"],
+    "2025-12-29"=>["A","A","-","-","-"],
     "2025-12-27"=>["P","P","P","P","-"],
     "2025-12-26"=>["P","P","P","P","-"],
     "2025-12-23"=>["P","P","A","A","A"],
@@ -150,15 +153,15 @@ $attendance = [
 ];
 
 $subjects = [
-    "Operating Systems"            => ["present"=>14,"total"=>14],
-    "Operating Systems Lab"        => ["present"=>4,"total"=>4],
-    "Python"                       => ["present"=>10,"total"=>11],
-    "Python Lab"                   => ["present"=>3,"total"=>4],
-    "Networking"                   => ["present"=>11,"total"=>11],
-    "Networking Lab"               => ["present"=>3,"total"=>4],
-    "Software Engineering"         => ["present"=>11,"total"=>12],
-    "Software Engineering Lab"     => ["present"=>3,"total"=>5],
-    "Cryptography"                 => ["present"=>10,"total"=>9],
+    "Operating Systems"            => ["present"=>15,"total"=>15],
+    "Operating Systems Lab"        => ["present"=>4,"total"=>5],
+    "Python"                       => ["present"=>11,"total"=>12],
+    "Python Lab"                   => ["present"=>3,"total"=>5],
+    "Networking"                   => ["present"=>13,"total"=>13],
+    "Networking Lab"               => ["present"=>3,"total"=>5],
+    "Software Engineering"         => ["present"=>12,"total"=>13],
+    "Software Engineering Lab"     => ["present"=>4,"total"=>6],
+    "Cryptography"                 => ["present"=>9,"total"=>11],
     "Cryptography Lab"             => ["present"=>1,"total"=>2],
     "PGPD"                         => ["present"=>3,"total"=>4],
     "PALO ALTO COURSE"             => ["present"=>2, "total"=>2],
@@ -631,8 +634,7 @@ function openAttTab(id, btn){
   <div class="hostel-tabs">
     <button class="hostel-tab-btn active" onclick="openHostelTab('info', this)">Hostel Info</button>
     <button class="hostel-tab-btn" onclick="openHostelTab('passes', this)">Gate Passes</button>
-    <button class="hostel-tab-btn" onclick="openHostelTab('mess', this)">Mess Menu</button>
-  </div>
+     </div>
 
 
   <!-- ===================== HOSTEL INFO (DEFAULT) ===================== -->
@@ -747,147 +749,30 @@ function openAttTab(id, btn){
 
 </div>
 
-<!-- ===================== MESS MENU ===================== -->
-<div id="messmenu" class="hostel-box" style="display:none;">
-
-  <h4 class="fw-bold mb-3">🍽️ Mess Menu (24 Dec – 31 Dec 2025)</h4>
-
-  <!-- DAY BUTTONS -->
-  <div class="d-flex gap-2 overflow-auto mb-3">
-    <button class="btn btn-primary btn-sm" onclick="showMess(0)">24 Wed</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(1)">25 Thu</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(2)">26 Fri</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(3)">27 Sat</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(4)">28 Sun</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(5)">29 Mon</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(6)">30 Tue</button>
-    <button class="btn btn-outline-primary btn-sm" onclick="showMess(7)">31 Wed</button>
-  </div>
-
-  <!-- 24 DEC -->
-  <div class="mess-card">
-    <b>🥞 Breakfast:</b> Semiya Upma, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Dana Ringan, Papad Sabji, Math Rasam, Roti, Chana Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Beetroot Chana Dal Fry, Rice, Majjiga Pulusu
-  </div>
-
-  <!-- 25 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Masala Idli, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Suran Sabji, Chana Dal Rasam, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Aloo Sukhi Bhaji, Rice, Masala Puri
-  </div>
-
-  <!-- 26 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Lemon Rice & Banana, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Masala Ravaiya, Desi Chana Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Cauliflower Fry, Rice, Sambar, Garlic Chutney
-  </div>
-
-  <!-- 27 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Methi Thepla & Tomato Pickle, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Fansi Sabji, Tuver Rasam, Roti, Palak Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Drumstick Tomato, Rice, Sambar, Chutney
-  </div>
-
-  <!-- 28 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Bread Butter, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Aloo Masala, Dal Tadka, Roti, Rice, Papad, Salad, Sweet<br>
-    <b>🍽️ Dinner:</b> Rice, Sweet
-  </div>
-
-  <!-- 29 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Veg Upma, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Dudhi Chana Dal, Chora Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Brinjal Fry, Rice, Sambar, Chutney
-  </div>
-
-  <!-- 30 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Bread Pakoda & Sauce, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Cabbage Sabji, Matar Rasam, Roti, Tomato Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Aloo Green Chilli Fry, Rice, Sambar, Pickle
-  </div>
-
-  <!-- 31 DEC -->
-  <div class="mess-card d-none">
-    <b>🥞 Breakfast:</b> Idli Rice, Tea/Coffee<br>
-    <b>🍛 Lunch:</b> Cabbage Sabji, Chana Dal, Roti, Methi Dal, Rice, Papad, Salad, Buttermilk<br>
-    <b>🍽️ Dinner:</b> Roti, Palak Paneer, Rice, Majjiga Pulusu
-  </div>
 
 </div>
 
-
-<!-- ===================== MESS MENU STYLE ===================== -->
-<style>
-.mess-card{
-  background:#fff;
-  padding:14px;
-  border-radius:12px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.08);
-  font-size:14px;
-}
 </style>
 
-<!-- ===================== MESS MENU SCRIPT ===================== -->
-<script>
-function showMess(index){
-  const cards = document.querySelectorAll(".mess-card");
-  const buttons = document.querySelectorAll("#messmenu button");
-
-  cards.forEach(c => c.classList.add("d-none"));
-  cards[index].classList.remove("d-none");
-
-  buttons.forEach(b => {
-    b.classList.remove("btn-primary");
-    b.classList.add("btn-outline-primary");
-  });
-
-  buttons[index].classList.remove("btn-outline-primary");
-  buttons[index].classList.add("btn-primary");
-}
-</script>
-
-
-
-
-<script>
-function openPremiumMess(dayId, btn){
-  document.querySelectorAll(".meal-card").forEach(c => c.style.display = "none");
-  document.getElementById(dayId).style.display = "block";
-
-  document.querySelectorAll(".mess-nav-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-}
 </script>
 <script>
-function openHostelTab(tab, btn) {
 
-  // Hide all hostel sections
+
+ function openHostelTab(tab, btn) {
+
   document.getElementById("info").style.display = "none";
   document.getElementById("passes").style.display = "none";
-  document.getElementById("messmenu").style.display = "none";
 
-  // Convert 'mess' to correct section ID
-  if (tab === "mess") tab = "messmenu";
-
-  // Show selected section
   document.getElementById(tab).style.display = "block";
 
-  // Update active button
   document.querySelectorAll(".hostel-tab-btn")
     .forEach(b => b.classList.remove("active"));
-  
+
   btn.classList.add("active");
 
-  // Smooth scroll
   document.getElementById("hostel").scrollIntoView({ behavior: "smooth" });
 }
+
 </script>
 
 
