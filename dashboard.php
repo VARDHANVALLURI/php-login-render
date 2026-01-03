@@ -112,6 +112,7 @@ body {
     <div class="menu-btn" onclick="openPage('fees')"><i class="bi bi-cash-coin"></i>Fees</div>
     <div class="menu-btn" onclick="openPage('student')"><i class="bi bi-person-vcard"></i>Student Info</div>
     <div class="menu-btn" onclick="openPage('hostel')"><i class="bi bi-building"></i>Hostel</div>
+    <div class="menu-btn" onclick="openPage('academic')"><i class="bi bi-calendar-event"></i>Academic Calender</div>
   </div>
 
 </section>
@@ -527,6 +528,7 @@ function openAttTab(id, btn){
       <span class="info-label">Student :</span>
       <span>6281048554</span>
     </div>
+    
 
     <div class="info-row">
       <span class="info-label">Father :</span>
@@ -1053,8 +1055,155 @@ function openAttTab(id, btn){
       </table>
     </div>
   </div>
+<!-- ================= ACADEMIC CALENDAR PAGE ================ -->
+<section id="academic" class="page" style="display:none;">
 
+  <button class="back-btn" onclick="openPage('home')">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+
+  <h3 class="fw-bold mb-3">
+    <i class="bi bi-calendar-event"></i> Academic Calendar
+  </h3>
+
+  <style>
+    /* Scoped styles – ZERO side effects */
+    #academic .timeline {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    #academic .timeline::before {
+      content:'';
+      position:absolute;
+      left:6px;
+      top:0;
+      bottom:0;
+      width:2px;
+      background:#e5e7eb;
+    }
+
+    #academic .event {
+      display:flex;
+      gap:12px;
+      margin-bottom:18px;
+      position:relative;
+    }
+
+    #academic .event-dot {
+      width:14px;
+      height:14px;
+      background:#2563eb;
+      border-radius:50%;
+      margin-top:4px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:10px;
+    }
+
+    #academic .event-card {
+      background:#fff;
+      padding:14px;
+      border-radius:14px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.08);
+      width:100%;
+    }
+
+    #academic .event-date {
+      font-size:13px;
+      font-weight:700;
+      color:#2563eb;
+      margin-bottom:4px;
+    }
+
+    #academic .event-title {
+      font-size:15px;
+      font-weight:600;
+      color:#111;
+    }
+  </style>
+
+  <div class="timeline">
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">09-08-2025</div>
+        <div class="event-title">Raksha Bandhan</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">15-08-2025</div>
+        <div class="event-title">Independence Day / Parsi New Year</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">16-08-2025</div>
+        <div class="event-title">Janmashtami (Shravan Vad-8)</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">27-08-2025</div>
+        <div class="event-title">Samvatsari (Chaturthi Paksha)</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">02-10-2025</div>
+        <div class="event-title">Mahatma Gandhi Jayanti / Dussehra</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">20-10-2025 → 25-10-2025</div>
+        <div class="event-title">Diwali</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">27-10-2025 → 02-11-2025</div>
+        <div class="event-title">Diwali Vacation</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">31-10-2025</div>
+        <div class="event-title">Sardar Vallabhbhai Patel Jayanti</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="event-dot"><i class="bi bi-check"></i></div>
+      <div class="event-card">
+        <div class="event-date">25-12-2025</div>
+        <div class="event-title">Christmas</div>
+      </div>
+    </div>
+
+  </div>
 </section>
+
+
 
  
 
