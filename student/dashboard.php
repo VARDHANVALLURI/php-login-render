@@ -24,7 +24,8 @@ include __DIR__ . "/includes/auth.php";
 
   <!-- CENTER PROFILE -->
   <div class="dashboard-center">
-    <img src="../assets/images/profile.jpg" class="profile-pic" alt="Profile">
+    <img src="../assets/images/profile.jpg" class="dashboard-avatar">
+
     <div class="name">Valluri Sri Krishna Vardan</div>
     <div class="status-badge">Active</div>
   </div>
@@ -50,3 +51,4 @@ include __DIR__ . "/includes/auth.php";
 
 </body>
 </html>
+
