@@ -29,8 +29,10 @@ html, body {
   background: #000;
   color: #fff;
   padding: 16px;
+  padding-top: calc(env(safe-area-inset-top) + 20px);
   border-bottom-left-radius: 22px;
   border-bottom-right-radius: 22px;
+  position: relative;
 }
 
 .dashboard-header .college {
@@ -1142,12 +1144,11 @@ html, body {
 .logout-btn {
   position: absolute;
   right: 14px;
-  top: 14px;
+  top: calc(env(safe-area-inset-top) + 14px);
   font-size: 13px;
-  text-decoration: none;
-  color: #ef4444;
   font-weight: 600;
 }
+
 /* ===== APP HEADER ===== */
 .app-header {
     height: 56px;
@@ -1392,11 +1393,13 @@ body {
 
 /* ===== DASHBOARD PROFILE PHOTO (SMALL) ===== */
 .dashboard-header .dashboard-pic {
-  width: 40px;
-  height: 32px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   object-fit: cover;
+  margin-top: 10px;
 }
+
 /* ================= PREMIUM PLACEMENTS ================= */
 
 .placements-content {
