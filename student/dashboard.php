@@ -9,7 +9,7 @@ include __DIR__ . "/includes/auth.php";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard</title>
 
-  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/common.css?v=3.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
@@ -17,17 +17,15 @@ include __DIR__ . "/includes/auth.php";
 
 <div class="page dashboard-page">
 
-  <!-- TOP BAR -->
-  <div class="dashboard-topbar">
-    <a href="logout.php" class="logout-btn">Logout</a>
-  </div>
+  <!-- LOGOUT BUTTON -->
+  <a href="logout.php" class="dashboard-logout">Logout</a>
 
   <!-- CENTER PROFILE -->
   <div class="dashboard-center">
-    <img src="../assets/images/profile.jpg" class="dashboard-avatar">
+    <img src="../assets/images/profile.jpg" class="dashboard-avatar" alt="Profile">
 
-    <div class="name">Valluri Sri Krishna Vardan</div>
-    <div class="status-badge">Active</div>
+    <div class="dashboard-name">Valluri Sri Krishna Vardan</div>
+    <div class="dashboard-status">Active</div>
   </div>
 
   <!-- DASHBOARD CONTENT -->
@@ -51,4 +49,3 @@ include __DIR__ . "/includes/auth.php";
 
 </body>
 </html>
-
