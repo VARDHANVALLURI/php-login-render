@@ -8,10 +8,30 @@ include __DIR__ . "/includes/auth.php";
 
 // MANUAL ATTENDANCE DATA
 $attendance = [
-  "2025-12-05"=>["-","P","P","P","P"],
-  "2025-12-04"=>["P","P","P","P","P"],
-  "2025-12-02"=>["P","P","P","P","P"],
-  "2025-12-01"=>["P","P","P","P","-"]
+    "2025-01-02"=>["P","P","P","P","-"],
+    "2026-01-01"=>["A","P","P","A","A"],
+    "2025-12-30"=>["P","P","P","P","P"],
+    "2025-12-29"=>["A","A","-","-","-"],
+    "2025-12-27"=>["P","P","P","P","-"],
+    "2025-12-26"=>["P","P","P","P","-"],
+    "2025-12-23"=>["P","P","A","A","A"],
+    "2025-12-22"=>["A","A","-","-","-"],
+    "2025-12-19"=>["P","-","-","-","-"],
+    "2025-12-18"=>["P","P","P","P","A"],
+    "2025-12-16"=>["P","P","P","P","A"],
+    "2025-12-13"=>["P","P","P","A","-"],
+    "2025-12-12"=>["P","P","P","P","-"],
+    "2025-12-11"=>["P","P","P","P","P"],
+    "2025-12-09"=>["P","P","P","P","P"],
+    "2025-12-08"=>["P","P","P","P","-"],
+    "2025-12-05"=>["P","P","P","P","-"],
+    "2025-12-04"=>["P","P","P","P","P"],
+    "2025-12-02"=>["P","P","P","P","P"],
+    "2025-12-01"=>["P","P","P","P","-"],
+    "2025-11-28"=>["P","P","P","A","-"],
+    "2025-11-27"=>["P","P","P","P","P"],
+    "2025-11-25"=>["P","P","P","P","P"],
+    "2025-11-24"=>["P","P","P","-","-"],
 ];
 
 // Calculate totals
@@ -34,16 +54,18 @@ function getDayName($date) {
 
 // SUBJECT WISE
 $subjects = [
-  "Operating Systems"=>["present"=>6,"total"=>6],
-  "Operating Systems Lab"=>["present"=>2,"total"=>2],
-  "Python"=>["present"=>4,"total"=>4],
-  "Python Lab"=>["present"=>2,"total"=>2],
-  "Networking"=>["present"=>4,"total"=>4],
-  "Networking Lab"=>["present"=>2,"total"=>2],
-  "Software Engineering"=>["present"=>6,"total"=>6],
-  "Software Engineering Lab"=>["present"=>2,"total"=>2],
-  "Cryptography"=>["present"=>5,"total"=>5],
-  "PGPD"=>["present"=>1,"total"=>2]
+   "Operating Systems"            => ["present"=>17,"total"=>17],
+    "Operating Systems Lab"        => ["present"=>4,"total"=>5],
+    "Python"                       => ["present"=>11,"total"=>13],
+    "Python Lab"                   => ["present"=>3,"total"=>5],
+    "Networking"                   => ["present"=>13,"total"=>13],
+    "Networking Lab"               => ["present"=>3,"total"=>5],
+    "Software Engineering"         => ["present"=>13,"total"=>14],
+    "Software Engineering Lab"     => ["present"=>4,"total"=>6],
+    "Cryptography"                 => ["present"=>10,"total"=>12],
+    "Cryptography Lab"             => ["present"=>1,"total"=>2],
+    "PGPD"                         => ["present"=>4,"total"=>5],
+    "PALO ALTO COURSE"             => ["present"=>2, "total"=>2],
 ];
 ?>
 <!DOCTYPE html>
@@ -152,3 +174,4 @@ $subjects = [
 
 </body>
 </html>
+
