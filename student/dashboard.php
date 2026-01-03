@@ -46,6 +46,21 @@ include __DIR__ . "/includes/auth.php";
   </div>
 
 </div>
+<script>
+(function () {
+  // Do not show back button on dashboard
+  if (window.location.pathname.includes('dashboard.php')) return;
+
+  // Create back button
+  const backBtn = document.createElement('a');
+  backBtn.href = 'dashboard.php';
+  backBtn.className = 'webview-back-btn';
+  backBtn.innerHTML = '<i class="bi bi-arrow-left"></i>';
+
+  document.body.appendChild(backBtn);
+})();
+</script>
 
 </body>
 </html>
+
