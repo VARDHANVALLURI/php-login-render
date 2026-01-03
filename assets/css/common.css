@@ -520,10 +520,9 @@ html, body {
    DASHBOARD – FINAL CORRECT FIX
    ========================================================= */
 
-/* Hide header ONLY on dashboard */
-.dashboard-page .dashboard-header {
-  display: none;
-}
+/* =========================================================
+   DASHBOARD – FINAL WORKING FIX
+   ========================================================= */
 
 /* Dashboard root */
 .dashboard-page {
@@ -533,20 +532,21 @@ html, body {
   background: #f2f4f7;
 }
 
-/* Logout / Back button */
+/* Logout button */
 .dashboard-logout {
   position: fixed;
-  top: 56px;               /* safe for mobile app */
+  top: 56px;              /* safe for Android WebView */
   right: 16px;
-  z-index: 9999;
+  z-index: 10000;
 
   font-size: 13px;
   padding: 6px 14px;
   border-radius: 18px;
-  background: rgba(0,0,0,0.12);
+  background: #ffffff;
   color: #111;
   font-weight: 600;
   text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* Center profile */
@@ -557,7 +557,6 @@ html, body {
   align-items: center;
   justify-content: center;
 
-  /* fine-tune vertical position */
   transform: translateY(-40px);
 }
 
