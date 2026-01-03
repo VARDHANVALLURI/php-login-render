@@ -534,9 +534,13 @@ html, body {
 /* Logout / Back button */
 .dashboard-logout {
   position: fixed;
-  top: calc(env(safe-area-inset-top) + 12px);
+
+  /* 🔥 FORCE it below app/status bar */
+  top: 56px;
+
   right: 16px;
   z-index: 9999;
+
   font-size: 13px;
   padding: 6px 14px;
   border-radius: 18px;
@@ -546,11 +550,15 @@ html, body {
   text-decoration: none;
 }
 
+
 /* True center profile */
 .dashboard-center {
   display: grid;
   place-items: center;
   text-align: center;
+
+  /* 🔥 Pull content upward */
+  transform: translateY(-50px);
 }
 
 /* Profile image */
