@@ -25,15 +25,6 @@ html, body {
 }
 
 /* ===== TOP HEADER ===== */
-.dashboard-header {
-  background: #000;
-  color: #fff;
-  padding: 16px;
-  padding-top: calc(env(safe-area-inset-top) + 20px);
-  border-bottom-left-radius: 22px;
-  border-bottom-right-radius: 22px;
-  position: relative;
-}
 
 .dashboard-header .college {
   font-size: 14px;
@@ -1141,13 +1132,6 @@ html, body {
 }
 /* ===== LOGOUT BUTTON ===== */
 
-.logout-btn {
-  position: absolute;
-  right: 14px;
-  top: calc(env(safe-area-inset-top) + 14px);
-  font-size: 13px;
-  font-weight: 600;
-}
 
 /* ===== APP HEADER ===== */
 .app-header {
@@ -1488,67 +1472,41 @@ body {
   font-weight: 700;
   color: #22c55e;
 }
-/* ===== TOP BAR (BACK / LOGOUT) ===== */
-.dashboard-topbar {
-  height: 56px;
-  padding-top: env(safe-area-inset-top);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 16px;
-  background: transparent;
-  position: relative;
+/* 🔥 KILL ALL OLD DASHBOARD HEADER RULES */
+.dashboard-header,
+.dashboard-header * {
+  display: none !important;
 }
 
-.logout-btn {
-  margin-top: 10px;
-  font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 16px;
-  background: rgba(0,0,0,0.08);
-  color: #111;
-  font-weight: 600;
-  text-decoration: none;
+/* =========================================================
+   DASHBOARD — FINAL CLEAN LAYOUT (NO CONFLICTS)
+   ========================================================= */
+
+/* Disable any old dashboard header rules */
+.dashboard-header,
+.dashboard-header * {
+  display: none !important;
 }
 
-/* ===== CENTER PROFILE ===== */
-.dashboard-center {
-  min-height: calc(100vh - 56px);
+/* Page must be exact viewport height */
+.page {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;   /* 🔥 centers vertically */
-  text-align: center;
 }
 
-.dashboard-center .profile-pic {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.dashboard-center .name {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.dashboard-center .status-badge {
-  margin-top: 6px;
-}
-/* ===== DASHBOARD TOP BAR ===== */
+/* ===== TOP BAR ===== */
 .dashboard-topbar {
   height: 64px;
   padding-top: env(safe-area-inset-top);
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
   padding-right: 16px;
 }
 
+/* Logout / Back button */
 .logout-btn {
-  margin-top: 8px;
   font-size: 13px;
   padding: 6px 14px;
   border-radius: 18px;
@@ -1558,16 +1516,17 @@ body {
   text-decoration: none;
 }
 
-/* ===== CENTER PROFILE ===== */
+/* ===== CENTER PROFILE (TRUE CENTER) ===== */
 .dashboard-center {
-  height: calc(100vh - 64px);
+  flex: 1; /* 🔥 THIS makes true vertical centering possible */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   /* 🔥 exact vertical center */
+  justify-content: center;
   text-align: center;
 }
 
+/* Profile image */
 .dashboard-center .profile-pic {
   width: 96px;
   height: 96px;
@@ -1576,11 +1535,13 @@ body {
   margin-bottom: 10px;
 }
 
+/* Name */
 .dashboard-center .name {
   font-size: 20px;
   font-weight: 700;
 }
 
+/* Status badge */
 .dashboard-center .status-badge {
   margin-top: 6px;
   background: #f59e0b;
@@ -1591,8 +1552,37 @@ body {
   font-weight: 600;
 }
 
-/* ===== CARDS BELOW PROFILE ===== */
+/* ===== DASHBOARD CARDS ===== */
 .dashboard-content {
   padding: 16px;
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.card i {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+
+
+
+
 
