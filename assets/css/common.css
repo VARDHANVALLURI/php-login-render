@@ -516,28 +516,27 @@ html, body {
    🔥 FINAL DASHBOARD FIX (DO NOT MOVE ABOVE)
    ========================================================= */
 
-/* Disable legacy dashboard header */
-.dashboard-header,
-.dashboard-header.simple,
-.dashboard-header * {
-  display: none !important;
+/* =========================================================
+   DASHBOARD – FINAL CORRECT FIX
+   ========================================================= */
+
+/* Hide header ONLY on dashboard */
+.dashboard-page .dashboard-header {
+  display: none;
 }
 
 /* Dashboard root */
 .dashboard-page {
   height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr auto;
+  display: flex;
+  flex-direction: column;
   background: #f2f4f7;
 }
 
 /* Logout / Back button */
 .dashboard-logout {
   position: fixed;
-
-  /* 🔥 FORCE it below app/status bar */
-  top: 56px;
-
+  top: 56px;               /* safe for mobile app */
   right: 16px;
   z-index: 9999;
 
@@ -550,15 +549,16 @@ html, body {
   text-decoration: none;
 }
 
-
-/* True center profile */
+/* Center profile */
 .dashboard-center {
-  display: grid;
-  place-items: center;
-  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  /* 🔥 Pull content upward */
-  transform: translateY(-50px);
+  /* fine-tune vertical position */
+  transform: translateY(-40px);
 }
 
 /* Profile image */
