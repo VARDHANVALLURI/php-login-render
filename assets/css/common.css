@@ -1488,4 +1488,111 @@ body {
   font-weight: 700;
   color: #22c55e;
 }
+/* ===== TOP BAR (BACK / LOGOUT) ===== */
+.dashboard-topbar {
+  height: 56px;
+  padding-top: env(safe-area-inset-top);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16px;
+  background: transparent;
+  position: relative;
+}
+
+.logout-btn {
+  margin-top: 10px;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.08);
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== CENTER PROFILE ===== */
+.dashboard-center {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* 🔥 centers vertically */
+  text-align: center;
+}
+
+.dashboard-center .profile-pic {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.dashboard-center .name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.dashboard-center .status-badge {
+  margin-top: 6px;
+}
+/* ===== DASHBOARD TOP BAR ===== */
+.dashboard-topbar {
+  height: 64px;
+  padding-top: env(safe-area-inset-top);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 16px;
+}
+
+.logout-btn {
+  margin-top: 8px;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.08);
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== CENTER PROFILE ===== */
+.dashboard-center {
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* 🔥 exact vertical center */
+  text-align: center;
+}
+
+.dashboard-center .profile-pic {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.dashboard-center .name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.dashboard-center .status-badge {
+  margin-top: 6px;
+  background: #f59e0b;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== CARDS BELOW PROFILE ===== */
+.dashboard-content {
+  padding: 16px;
+}
 
