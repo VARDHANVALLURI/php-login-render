@@ -585,3 +585,25 @@ html, body {
   font-size: 12px;
   font-weight: 600;
 }
+/* =========================================================
+   GLOBAL BACK-BUTTON HEADER FIX (SAFE)
+   ========================================================= */
+
+.dashboard-header,
+.academic-header,
+.fees-header,
+.hostel-header,
+.results-header,
+.timetable-header,
+.notification-header,
+.placements-header,
+.profile-header {
+  padding-top: 72px;   /* 🔥 pushes header + back button down */
+}
+.erp-back,
+.dashboard-header a,
+.academic-header a {
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
